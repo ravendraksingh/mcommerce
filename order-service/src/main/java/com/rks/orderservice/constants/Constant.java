@@ -34,4 +34,6 @@ public class Constant {
 
     public static final String INTERNAL_SERVER_ERROR_MSG    = "Your request was declined due to an internal error. Please try again after sometime.";
     public static final String DB_NOT_AVAILABLE_ERROR_MSG = "Database not available";
+
+    public static final String JWT_SECRET_KEY_ORDER_SERVICE = "Ak37osje2360KHy#0ncWR0J$xw29";
 }
