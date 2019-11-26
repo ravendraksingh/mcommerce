@@ -11,7 +11,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListeners;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class OrderCreatedListener {
 
     private static final Logger log = LoggerFactory.getLogger(OrderCreatedListener.class);

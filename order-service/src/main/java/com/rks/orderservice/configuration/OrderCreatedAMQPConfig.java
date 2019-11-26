@@ -40,7 +40,7 @@ public class OrderCreatedAMQPConfig {
         return BindingBuilder.bind(queue).to(exchange).with(properties.getOrderCreatedRoutingKey());
     }
 
-    @Bean(name = "orderCreatedContainer")
+   /* @Bean(name = "orderCreatedContainer")
     @Qualifier("orderCreatedContainer")
     SimpleMessageListenerContainer container
             (ConnectionFactory connectionFactory1,
@@ -50,7 +50,7 @@ public class OrderCreatedAMQPConfig {
         orderCreatedContainer.setQueueNames(properties.getOrderCreatedQueueName());
         orderCreatedContainer.setMessageListener(listenerAdapter);
         return orderCreatedContainer;
-    }
+    }*/
 
     /*@Bean
     public MappingJackson2MessageConverter consumerJackson2MessageConverter() {
@@ -71,9 +71,9 @@ public class OrderCreatedAMQPConfig {
         return new Jackson2JsonMessageConverter();
     }
 
-    @Bean(name = "orderCreatedListenerAdapter")
+   /* @Bean(name = "orderCreatedListenerAdapter")
     @Qualifier("orderCreatedListenerAdapter")
     MessageListenerAdapter listenerAdapter(OrderCreatedListener listener) {
         return new MessageListenerAdapter(listener, "listenToOrderCreated");
-    }
+    }*/
 }

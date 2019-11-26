@@ -1,6 +1,7 @@
 package com.rks.orderservice.controller;
 
 import com.rks.orderservice.domain.Order;
+import com.rks.orderservice.dto.request.OrderRequest;
 import com.rks.orderservice.dto.response.OrderResponse;
 import com.rks.orderservice.service.OrderService;
 import org.slf4j.Logger;
@@ -26,15 +27,24 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{orderId}")
-    public OrderResponse getOrder(@PathVariable(value="orderId", required=true) Long orderId) {
+    public OrderResponse getOrder(@PathVariable(value="orderId") Long orderId) {
         return orderService.findOrderById(orderId);
     }
 
-    @PostMapping(path = "/orders")
+    @PostMapping("/orders")
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderResponse createOrder(@RequestBody Order orderRequest) {
+    public OrderResponse createOrder(@RequestBody OrderRequest orderRequest) {
         return orderService.createNewOrder(orderRequest);
     }
+
+    //public void deleteOrder(Long orderId) ;
+
+    /*@RequestMapping(value = "/orders/update-status?orderId={orderId}&newStatus={newStatus}", method=RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateOrderStatus(@RequestParam("orderId") Long orderId,
+                                           @RequestParam("newStatus") String newStatus) {
+        orderService.updateOrderStatus(orderId, newStatus);
+    }*/
 
 
     /*@GetMapping("/orders/{orderStatus}")

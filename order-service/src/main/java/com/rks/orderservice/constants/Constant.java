@@ -14,6 +14,7 @@ public class Constant {
     public static final String ITEMS_IN_ORDER           = "items";
     public static final String ORDER_AMOUNT             = "order_amount";
 
+
     /**
      * Item related constants
     */
@@ -22,4 +23,15 @@ public class Constant {
     public static final String ITEM_QUANTITY            = "quantity";
     public static final String ITEM_PRICE               = "price";
 
+    // Exception Message
+    public static final String INTERNAL_SERVER_ERROR    = "Your request was declined due to an internal error. Please try again after sometime.";
+    public static final String FAILED                   = "failed";
+    public static final String IS_OLD_API               = "isOldApi";
+
+    public static final String INVALID_ORDER_ID_MSG     = "Invalid Order Id";
+    public static final String UPDATE_ORDER_FAILED_ERROR_MSG = "Order update operation failed";
+    public static final String UPDATE_ORDER_SUCCESS_MSG = "Order updated successfully";
+
+    public static final String INTERNAL_SERVER_ERROR_MSG    = "Your request was declined due to an internal error. Please try again after sometime.";
+    public static final String DB_NOT_AVAILABLE_ERROR_MSG = "Database not available";
 }

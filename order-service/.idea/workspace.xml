@@ -2,54 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbe691d4-df50-464e-80d0-665a04116471" name="Default Changelist" comment="Added basic Order service. It generates a new order and items of this order.">
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/config/CatalogExecutorConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/UtilityController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/dto/response/BaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/dto/response/HealthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/AMQPConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedAMQPConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedRabbitMQProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/RabbitMQProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderListDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/CreateOrderRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/BaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/BaseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/AMQPMessageProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/AMQPProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/Notification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedMessageProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/RabbitMqListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/util/StatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/ErrorCodeConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/NotInUse_OrderConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderRequestToOrderConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderToOrderResponseConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderItemRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/BadRequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/DaoLayerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExceptionEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExternalServiceErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExternalServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExternalServiceUnavailableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/InvalidParametersException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/MicroServiceErrorException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/MicroServiceUnavailableException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/PreValidationFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/RequestConflictException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/RestExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/UnauthorizedAccessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/mappers/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/utility/CommonUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../catalog-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/CatalogServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/CatalogServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/bootstrap/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/bootstrap/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedAMQPConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedAMQPConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/ItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderListDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/OrderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/service/impl/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/service/impl/PaymentServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -67,20 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/OrderServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="92" column="61" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/util/StatusEnum.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="-442">
+              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,11 +71,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedListener.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="195">
+              <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,41 +93,24 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>create</find>
+      <find>createNew</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/order/domain/Item.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/order/domain/Order.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order_safe.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/BaseEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/config/SwaggerConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/BaseException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderListDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderRequestObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ItemResponseObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ItemListResponseObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/ItemService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/ItemServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/ItemController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/BaseResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/ItemRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/OrderRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ItemsInOrder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponseNew.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/CreateOrderRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Item.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderItem.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/CustomMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/CustomMessageSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/config/RabbitMQConfig.java" />
@@ -151,19 +120,42 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/Notification.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/MessageProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/config/RabbitMQProperties.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/bootstrap/DataLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedRabbitMQProperties.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/RabbitMQProperties.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/AMQPConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/AMQPMessageProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/RabbitMqListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedMessageProducer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedAMQPConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/util/StatusEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/OrderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedAMQPConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/NotFoundException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/BadRequestException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ErrorResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/utility/RestMethod.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/utility/CommonUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/RestExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExceptionEnum.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderResponseToOrder.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/ErrorCodeConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderItemRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderRequestToOrder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/NotInUse_OrderConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderToOrderResponseConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderRequestToOrderConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/mappers/OrderMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/bootstrap/DataLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/OrderServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -203,7 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -266,7 +257,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="rks" type="462c0819:PsiDirectoryNode" />
               <item name="orderservice" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
+              <item name="converters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="order-service" type="b2602c69:ProjectViewProjectNode" />
@@ -277,19 +268,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="rks" type="462c0819:PsiDirectoryNode" />
               <item name="orderservice" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-              <item name="response" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="order-service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="order-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="rks" type="462c0819:PsiDirectoryNode" />
-              <item name="orderservice" type="462c0819:PsiDirectoryNode" />
-              <item name="rabbitmq" type="462c0819:PsiDirectoryNode" />
+              <item name="mappers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="order-service" type="b2602c69:ProjectViewProjectNode" />
@@ -325,6 +304,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,6 +315,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/rks/orderservice" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -343,11 +324,16 @@
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/rks/orderservice" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.rks.orderservice.rabbitmq" />
-      <recent name="com.rks.orderservice.configuration" />
+      <recent name="com.rks.orderservice.converters" />
+      <recent name="com.rks.orderservice.dto.request" />
       <recent name="com.rks.orderservice.dto.response" />
-      <recent name="com.rks.orderservice.domain" />
+      <recent name="com.rks.orderservice.exception" />
+      <recent name="com.rks.orderservice.constants" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.rks.orderservice.service.impl" />
@@ -393,7 +379,13 @@
       <workItem from="1573835985597" duration="20000" />
       <workItem from="1574138367926" duration="19082000" />
       <workItem from="1574227172329" duration="8252000" />
-      <workItem from="1574240434219" duration="22874000" />
+      <workItem from="1574240434219" duration="23207000" />
+      <workItem from="1574311419375" duration="12003000" />
+      <workItem from="1574397484109" duration="9124000" />
+      <workItem from="1574488906381" duration="6572000" />
+      <workItem from="1574578718263" duration="608000" />
+      <workItem from="1574657572564" duration="12776000" />
+      <workItem from="1574747765028" duration="8963000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic Order service. It generates a new order and items of this order.">
       <created>1573534637134</created>
@@ -402,17 +394,23 @@
       <option name="project" value="LOCAL" />
       <updated>1573534637134</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added order creation queue and payment processing thru Rabbit MQ based message.">
+      <created>1574274491435</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574274491435</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85049000" />
+    <option name="totallyTimeSpent" value="135428000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="811" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24105866" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -422,7 +420,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32902297" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37212643" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33045977" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994253" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -435,10 +433,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
-      <window_info anchor="bottom" id="Problems" order="15" />
+      <window_info anchor="bottom" id="Problems" order="15" weight="0.3275862" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24964234" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24964234" />
       <window_info anchor="right" id="Maven" order="3" weight="0.3297568" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -454,246 +452,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added basic Order service. It generates a new order and items of this order." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic Order service. It generates a new order and items of this order." />
+    <MESSAGE value="Added order creation queue and payment processing thru Rabbit MQ based message." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added order creation queue and payment processing thru Rabbit MQ based message." />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderResponse.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderRequest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order_safe.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/BaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/BaseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="54" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.2.1.RELEASE/spring-data-commons-2.2.1.RELEASE.jar!/org/springframework/data/domain/Sort.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/OrderListDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderRequestObject.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/ItemService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ItemResponseObject.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ItemListResponseObject.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/ItemServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/ItemController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/ItemRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/BaseResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.2.1.RELEASE/spring-data-commons-2.2.1.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/CreateOrderRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/jakarta/validation/jakarta.validation-api/2.0.1/jakarta.validation-api-2.0.1.jar!/javax/validation/constraints/NotNull.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="29" column="15" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="27" column="54" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/CustomMessageSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/CustomMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="24" column="72" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/repository/OrderRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#0#48#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/bootstrap/DataLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/AMQPProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="117" selection-start-line="18" selection-start-column="117" selection-end-line="18" selection-end-column="117" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/Notification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -701,13 +467,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -728,23 +487,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/RabbitMQProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedRabbitMQProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -769,18 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedAMQPConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="61" column="75" selection-start-line="61" selection-start-column="75" selection-end-line="61" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2868#2869#0" expanded="true" />
-            <element signature="e#2925#2926#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedMessageProducer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -788,10 +518,301 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedAMQPConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/RabbitMQProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/OrderCreatedRabbitMQProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/NotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExternalServiceException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExternalServiceErrorException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/InvalidParametersException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/RequestConflictException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/UnauthorizedAccessException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/DaoLayerException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/utility/RestMethod.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/utility/CommonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1844">
+          <caret line="359" column="69" lean-forward="true" selection-start-line="359" selection-start-column="69" selection-end-line="359" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/PreValidationFailedException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/MicroServiceErrorException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/MicroServiceUnavailableException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/ExceptionEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="7" selection-start-line="40" selection-start-column="13" selection-end-line="42" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/BadRequestException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/util/StatusEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="180">
+          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/BaseResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/20.0/guava-20.0-sources.jar!/com/google/common/base/Preconditions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="96" column="19" selection-start-line="96" selection-start-column="19" selection-end-line="96" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/RestExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1811">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/CreateOrderRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/ErrorResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/ErrorCodeConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="55" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="85" selection-start-line="35" selection-start-column="85" selection-end-line="35" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderItemRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/request/OrderRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="34" column="15" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/NotInUse_OrderConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/domain/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderToOrderResponseConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.5/modelmapper-2.3.5.jar!/org/modelmapper/Converter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/2.3.5/modelmapper-2.3.5.jar!/org/modelmapper/ModelMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/converters/OrderRequestToOrderConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/mappers/OrderMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/bootstrap/DataLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="54" column="10" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -800,22 +821,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/OrderServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="92" column="61" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/dto/response/OrderResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="29" column="56" lean-forward="true" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/rabbitmq/OrderCreatedListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="-442">
+          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

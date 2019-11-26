@@ -1,9 +1,8 @@
 package com.rks.orderservice.bootstrap;
 
-import com.rks.orderservice.domain.Item;
+import com.rks.orderservice.converters.NotInUse_OrderConverter;
 import com.rks.orderservice.domain.Order;
-import com.rks.orderservice.dto.request.CreateOrderRequest;
-import com.rks.orderservice.dto.response.OrderItem;
+import com.rks.orderservice.dto.response.OrderResponse;
 import com.rks.orderservice.repository.OrderRepository;
 import com.rks.orderservice.service.OrderService;
 import com.rks.orderservice.util.StatusEnum;
@@ -13,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 
 @Component
@@ -25,16 +21,39 @@ public class DataLoader implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(DataLoader.class);
     private OrderService orderService;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
     public DataLoader(OrderService orderService) {
         this.orderService = orderService;
     }
 
+
     @Override
     public void run(String... args) throws Exception {
-        int count = orderService.findAllOrders().size();
-        if (count == 0) {
-            loadData();
-        }
+        //int count = orderService.findAllOrders().size();
+        //if (count == 0) {
+        //    loadData();
+        //}
+        //testUpdateOrder();
+    }
+
+    private void testUpdateOrder() {
+        log.info("testing update order service");
+        OrderResponse orderResponse = orderService.findOrderById(186L);
+        //ModelMapper mapper = new ModelMapper();
+        //System.out.println("orderResponse: " + orderResponse);
+        //Order o1 = mapper.map(orderResponse, Order.class);
+        //System.out.println("o1: " + o1);
+
+        Order o2 = NotInUse_OrderConverter.orderResponseToOrder(orderResponse);
+        //
+        o2.setOrderDate(new Date());
+        //o2.setOrderStatus(StatusEnum.ORDER_PAID.getStatus());
+        //orderRepository.save(o2);
+        o2.setOrderStatus(StatusEnum.ORDER_DELIVERED.getStatus());
+        //orderService.updateOrder(o2);
+        System.out.println(o2);
     }
 
     private void loadData() {

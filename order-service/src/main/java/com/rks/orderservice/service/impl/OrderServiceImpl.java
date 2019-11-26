@@ -1,10 +1,11 @@
 package com.rks.orderservice.service.impl;
 
-import com.rks.orderservice.domain.Item;
 import com.rks.orderservice.domain.Order;
-import com.rks.orderservice.dto.request.CreateOrderRequest;
-import com.rks.orderservice.dto.response.OrderItem;
+import com.rks.orderservice.dto.request.OrderRequest;
 import com.rks.orderservice.dto.response.OrderResponse;
+import com.rks.orderservice.exception.BaseException;
+import com.rks.orderservice.exception.NotFoundException;
+import com.rks.orderservice.mappers.OrderMapper;
 import com.rks.orderservice.rabbitmq.AMQPMessageProducer;
 import com.rks.orderservice.rabbitmq.OrderCreatedMessageProducer;
 import com.rks.orderservice.rabbitmq.OrderMessage;
@@ -16,10 +17,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
+import static com.rks.orderservice.constants.Constant.*;
+import static com.rks.orderservice.constants.Constant.INTERNAL_SERVER_ERROR;
+import static com.rks.orderservice.constants.ErrorCodeConstants.*;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -35,13 +39,16 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderCreatedMessageProducer orderCreatedMessageProducer;
 
+    @Autowired
+    private OrderMapper orderMapper;
+
     @Override
-    public OrderResponse createNewOrder(final Order newOrderRequest) {
+    public OrderResponse createNewOrder(final OrderRequest orderRequest) {
         log.info("Going to create new order");
         try {
-            Order request = newOrderRequest;
+            Order request = new Order();
+            orderMapper.map(orderRequest, request);
             request.setOrderStatus(StatusEnum.ORDER_CREATED.getStatus());
-            request.getItems().forEach(item -> item.setOrder(request));
 
             Order savedOrder = orderRepository.save(request);
             log.info("Order created successfully.");
@@ -55,63 +62,23 @@ public class OrderServiceImpl implements OrderService {
             message.setOrderStatus(savedOrder.getOrderStatus());
             producer.sendMessage(message);
             orderCreatedMessageProducer.sendMessage(message);
+            sendMessageToOrderQueue(savedOrder);
 
             return createOrderResponseForOrder(savedOrder);
 
         } catch (Exception e) {
-            log.error("Exception occurred. Message {}.", e.getMessage());
-            throw new RuntimeException(e.getMessage());
+            BaseException ex = new BaseException(FAILED, DB_NOT_AVAILABLE_ERROR_CODE, DB_NOT_AVAILABLE_ERROR_MSG);
+            log.error("Exception occurred. Message {}. ResponseCode: {}. Message: {}", ex.getCode(), ex.getMessage());
+            throw ex;
         }
     }
 
-    /*private Order createOrderForOrderRequest(CreateOrderRequest request) {
-        log.info("Creating order from order request");
-        Order order = new Order();
-        order.setOrderStatus(StatusEnum.ORDER_CREATED.getStatus());
-        order.setOrderDate(new Date());
-
-        List<Item> items = new ArrayList<>();
-        log.info("Fetching item list from order request");
-
-        for(OrderItem orderItem : request.getItems()) {
-            Item item = new Item();
-            item.setName(orderItem.getName());
-            item.setQuantity(orderItem.getQuantity());
-            item.setPrice(orderItem.getPrice());
-            item.setOrder(order);
-            log.info("Item {}.", item);
-            items.add(item);
-        }
-        order.setItems(items);
-        log.info("New order object -> {}", order.toString());
-        return order;
-    }*/
-
-    private OrderResponse createOrderResponseForOrder(Order savedOrder) {
-        OrderResponse response = new OrderResponse();
-        response.setOrderId(savedOrder.getId());
-        response.setOrderStatus(savedOrder.getOrderStatus());
-        BigDecimal orderAmount = BigDecimal.ZERO;
-
-        List<OrderItem> items = new ArrayList<>();
-
-        for (Item item : savedOrder.getItems()) {
-            OrderItem orderItem = new OrderItem();
-            orderItem.setId(item.getId());
-            orderItem.setName(item.getName());
-            orderItem.setQuantity(item.getQuantity());
-            orderItem.setPrice(item.getPrice());
-
-            orderAmount = orderAmount.add(item.getPrice());
-
-            items.add(orderItem);
-        }
-        response.setOrderAmount(orderAmount);
-        response.setItemList(items);
-        //response.setCode(201);
-        //response.setStatus(StatusEnum.SUCCESS.getStatus());
-        //response.setMessage("Order created successfully with order id "+response.getOrderId());
-        return response;
+    private void sendMessageToOrderQueue(Order request) {
+        OrderMessage message = new OrderMessage();
+        message.setOrderId(request.getId());
+        //message.setOrderDate(savedOrder.getOrderDate());
+        message.setOrderStatus(request.getOrderStatus());
+        orderCreatedMessageProducer.sendMessage(message);
     }
 
     @Override
@@ -127,44 +94,56 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    /*@Override
-    public OrderResponse findOrderById(Long orderId) {
-        log.info("Fetching order details for order id {}.", orderId);
-
-        OrderResponse response = new OrderResponse();
-        response.setOrderId(orderId);
-
-        Order fetchedOrder;
-        fetchedOrder = orderRepository.findById(orderId).get();
-
-        if (fetchedOrder != null) {
-            for (Item item : fetchedOrder.getItems()) {
-                OrderItem orderItem = new OrderItem();
-                orderItem.setId(item.getId());
-                orderItem.setName(item.getName());
-                orderItem.setQuantity(item.getQuantity());
-                orderItem.setPrice(item.getPrice());
-
-                response.getItemList().add(orderItem);
-            }
-        }
-        //response.setCode(200);
-        //response.setStatus(StatusEnum.SUCCESS.getStatus());
-        return response;
-    }*/
-
     @Override
     public OrderResponse findOrderById(Long orderId) {
         log.info("Fetching order details for order id {}.", orderId);
-
-        Order fetchedOrder;
-        fetchedOrder = orderRepository.findById(orderId).get();
-
-        if (fetchedOrder == null) {
-            return new OrderResponse();
-        } else {
+        try {
+            Optional<Order> optionalOrder = orderRepository.findById(orderId);
+            if (!optionalOrder.isPresent()) {
+                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID, INVALID_ORDER_ID_MSG);
+                log.error("Exception occurred while fetching the order for orderId {}. ResponseCode: {}. Message: {}",
+                        orderId, exception.getCode(), exception.getMessage());
+                throw exception;
+            }
+            Order fetchedOrder = optionalOrder.get();
             return createOrderResponseForOrder(fetchedOrder);
+        } catch (BaseException e) {
+            throw e;
+        } catch (Exception e) {
+            BaseException ex = new BaseException(FAILED, INTERNAL_SERVER_ERROR_CODE, INTERNAL_SERVER_ERROR_MSG);
+            log.error("Exception occurred while fetching the order for orderId {}. ResponseCode: {}. Message: {}",
+                    orderId, ex.getCode(), ex.getMessage());
+            throw ex;
         }
+    }
+
+    @Override
+    public void updateOrderStatus(Long orderId, String orderStatus) {
+        log.info("Updating order status for orderId {}", orderId);
+        try {
+            Optional<Order> optionalOrder = orderRepository.findById(orderId);
+            if (!optionalOrder.isPresent()) {
+                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID, INVALID_ORDER_ID_MSG);
+                log.error("Exception occurred while fetching the order for orderId {}. ResponseCode: {}. Message: {}",
+                        orderId, exception.getCode(), exception.getMessage());
+                throw exception;
+            }
+
+            Order fetchedOrder = optionalOrder.get();
+            fetchedOrder.setOrderStatus(orderStatus);
+
+            Order savedOrder = orderRepository.save(fetchedOrder);
+            createOrderResponseForOrder(savedOrder);
+        } catch (Exception e) {
+            BaseException ex = new BaseException(FAILED, INTERNAL_SERVER_ERROR_CODE, INTERNAL_SERVER_ERROR);
+            throw ex;
+        }
+    }
+
+    private OrderResponse createOrderResponseForOrder(Order request) {
+        OrderResponse response = new OrderResponse();
+        orderMapper.map(request, response);
+        return response;
     }
 
     @Override
@@ -180,24 +159,4 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    /*
-    @Override
-    public List<FDMasterData> getActiveFdsForUser(String userId) {
-        try {
-            logger.info("Fetching active FDs for UserId: {}.", userId);
-
-            List<FDMasterData> fdMasterDataList = fdMasterRepository
-                    .findByUserIdAndStatus(userId, "active", new Sort(
-                            Direction.DESC, "bookingDate"));
-            return fdMasterDataList;
-        } catch (Exception e) {
-            BaseException ex = ServiceErrorFactory
-                    .getException(TSERVICE, String.valueOf(DB_SERVICE_UNAVAILABLE_MESSAGE)).get();
-            logger.error(
-                    "Exception occurred: {} while fetching data for ResponseCode: {}. Message: {}.",
-                    CommonUtils.exceptionFormatter(e), ex.getCode(), ex.getMessage());
-            throw ex;
-        }
-    }
-     */
 }
