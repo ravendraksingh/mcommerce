@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbe691d4-df50-464e-80d0-665a04116471" name="Default Changelist" comment="Added basic Order service. It generates a new order and items of this order.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerInternal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../catalog-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/bootstrap/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/bootstrap/DataLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/client/order/OrderClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/client/order/OrderClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/client/order/impl/OrderClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/rks/paymentservice/client/order/impl/OrderClientImpl.java" afterDir="false" />
@@ -33,37 +34,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="107" column="11" selection-start-line="102" selection-start-column="10" selection-end-line="107" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="61" column="63" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+            <state relative-caret-position="-506">
+              <caret line="102" column="43" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="22" column="79" lean-forward="true" selection-start-line="22" selection-start-column="79" selection-end-line="22" selection-end-column="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerInternal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="90" column="20" lean-forward="true" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
+            <state relative-caret-position="45">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -131,16 +114,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/OrderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/bootstrap/DataLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/service/impl/OrderServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/RequestLoggingFilterConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerInternal.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -254,6 +237,13 @@
               <item name="orderservice" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="order-service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="order-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -341,7 +331,7 @@
       <workItem from="1574578718263" duration="608000" />
       <workItem from="1574657572564" duration="12776000" />
       <workItem from="1574747765028" duration="17730000" />
-      <workItem from="1574829929503" duration="9383000" />
+      <workItem from="1574829929503" duration="12457000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic Order service. It generates a new order and items of this order.">
       <created>1573534637134</created>
@@ -378,11 +368,18 @@
       <option name="project" value="LOCAL" />
       <updated>1574843343326</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added more swagger documentation. Created separate controllers for internal and external APIs">
+      <created>1574850999159</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574850999159</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153578000" />
+    <option name="totallyTimeSpent" value="156652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="811" extended-state="0" />
@@ -435,7 +432,8 @@
     <MESSAGE value="Added Mappers and Converters for Order." />
     <MESSAGE value="Added request logging filter" />
     <MESSAGE value="Added JWT enabled APIs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JWT enabled APIs" />
+    <MESSAGE value="Added more swagger documentation. Created separate controllers for internal and external APIs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more swagger documentation. Created separate controllers for internal and external APIs" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -712,13 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="9" column="80" selection-start-line="9" selection-start-column="80" selection-end-line="9" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/RequestLoggingFilterConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -740,13 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="28" column="76" selection-start-line="28" selection-start-column="76" selection-end-line="28" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -777,6 +761,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="79" selection-start-line="22" selection-start-column="79" selection-end-line="22" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="534">
@@ -786,22 +777,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerInternal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="90" column="20" lean-forward="true" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="61" column="63" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+        <state relative-caret-position="-506">
+          <caret line="102" column="43" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/orderservice/configuration/SwaggerConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" column="79" lean-forward="true" selection-start-line="22" selection-start-column="79" selection-end-line="22" selection-end-column="79" />
+        <state relative-caret-position="45">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
         </state>
       </provider>
     </entry>
