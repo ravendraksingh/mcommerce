@@ -1,6 +1,8 @@
 package com.rks.orderservice.constants;
 
 public class Constant {
+
+    public static final String AUTHORIZATION             = "authorization";
     /**
      * Response related constants
      */
@@ -23,6 +25,9 @@ public class Constant {
     public static final String ITEM_QUANTITY            = "quantity";
     public static final String ITEM_PRICE               = "price";
 
+    public static final String ORDER_SERVICE            = "order-service";
+    public static final String PAYMENT_SERVICE          = "payment-service";
+
     // Exception Message
     public static final String INTERNAL_SERVER_ERROR    = "Your request was declined due to an internal error. Please try again after sometime.";
     public static final String FAILED                   = "failed";
@@ -36,4 +41,7 @@ public class Constant {
     public static final String DB_NOT_AVAILABLE_ERROR_MSG = "Database not available";
 
     public static final String JWT_SECRET_KEY_ORDER_SERVICE = "Ak37osje2360KHy#0ncWR0J$xw29";
+    public static final String JWT_SECRET_KEY_PAYMENT_SERVICE = "s7kys&923onwg81AE9$$qdvs45";
+
+    public static final String CLIENT_ID                = "Client-id";
 }
