@@ -17,4 +17,6 @@ public interface IPaymentService {
     OrderResponse getOrderDetailsRemote(Long orderId);
 
     OrderResponse getOrderDetailsRemoteWithJwt(Long orderId);
+
+    OrderResponse getOrderDetailsRemoteWithJwtToken(Long orderId, String jwtToken);
 }

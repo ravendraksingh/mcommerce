@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import static com.rks.paymentservice.constants.Constant.AUTHORIZATION;
+
 
 @RestController
 @RequestMapping("/payment-service/api/v1")
@@ -54,5 +56,11 @@ public class PaymentController {
     @GetMapping("/orders/order-with-auth/{orderId}")
     public OrderResponse getOrderDetailsRemoteWithJwt(@PathVariable("orderId") Long orderId) {
         return paymentService.getOrderDetailsRemoteWithJwt(orderId);
+    }
+
+    @GetMapping("/orders/order-with-jwt/{orderId}")
+    public OrderResponse getOrderDetailsRemoteWithJwtToken(@PathVariable("orderId") Long orderId,
+                                                      @RequestHeader(value = AUTHORIZATION, required = false) String jwtToken) {
+        return paymentService.getOrderDetailsRemoteWithJwtToken(orderId, jwtToken);
     }
 }

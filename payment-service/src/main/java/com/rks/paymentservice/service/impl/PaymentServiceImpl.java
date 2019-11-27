@@ -121,4 +121,12 @@ public class PaymentServiceImpl implements IPaymentService {
         log.info("Response received. orderResponse: {}", orderResponse);
         return orderResponse;
     }
+
+    @Override
+    public OrderResponse getOrderDetailsRemoteWithJwtToken(Long orderId, String jwtToken) {
+        log.info("Going to fetch order details from order service via network call");
+        OrderResponse orderResponse = orderClient.getOrderDetailsWithJwtToken(orderId, jwtToken);
+        log.info("Response received. orderResponse: {}", orderResponse);
+        return orderResponse;
+    }
 }

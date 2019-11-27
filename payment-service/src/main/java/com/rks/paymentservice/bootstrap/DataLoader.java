@@ -41,6 +41,10 @@ public class DataLoader implements CommandLineRunner {
         //}
         //getDataFromOrderService();
 
+        testJwtToken();
+    }
+
+    private void testJwtToken() throws Exception {
         String token = createJwtToken(269L);
         log.info("Token: {}", token);
 

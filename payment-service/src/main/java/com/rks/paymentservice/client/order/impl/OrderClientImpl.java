@@ -73,7 +73,7 @@ public class OrderClientImpl implements OrderClient {
 
         try {
             HttpHeaders httpHeaders = createHttpHeadersForOrderInquiry();
-            final String url = orderServiceIp + "order-service/api/v1/orders/" + orderId;
+            final String url = orderServiceIp + "order-service/ext/v1/orders/" + orderId;
 
             logger.debug("url: {}, headers: {}, service: {}", url, httpHeaders, ORDER_SERVICE);
 
@@ -109,7 +109,43 @@ public class OrderClientImpl implements OrderClient {
             String jwtToken = getJwTokenForOrderInquiry(orderId);
             HttpHeaders httpHeaders = createHttpHeadersForOrderInquiryWithJwt(jwtToken);
 
-            final String url = orderServiceIp + "order-service/api/v1/orders/order-with-auth/" + orderId;
+            final String url = orderServiceIp + "order-service/ext/v1/orders/" + orderId;
+
+            logger.debug("url: {}, headers: {}, service: {}", url, httpHeaders, ORDER_SERVICE);
+
+            OrderResponse response = RestMethod.restRequest(httpHeaders, OrderResponse.class, url, ORDER_SERVICE, HttpMethod.GET, null);
+
+            logger.debug("Response received from order service: {}", response);
+            if (response == null) {
+                BaseException ex = new BaseException("failure", NULL_RESPONSE_RECEIVED, "Null response");
+                logger.error("Exception occurred. ResponseCode: {}. Message:{}.", ex.getCode(), ex.getMessage());
+                throw ex;
+            }
+            return response;
+        } catch (MicroServiceUnavailableException e) {
+            e.setCode(ORDER_SERVICE_UNAVAILABLE_ERROR_CODE);
+            logger.error(
+                    "MicroServiceUnavailableException occurred: {} while fetching order details from Order service.  "
+                            + "ResponseCode: {}.  Message: {}.", e.toString(),
+                    e.getCode(), e.getCustomMessage());
+            throw e;
+        } catch (BaseException e) {
+            logger.error("Exception occurred: {} while fetching order details from Order service.  "
+                            + "ResponseCode: {}.  Message: {}.", e.toString(),
+                    e.getCode(), e.getCustomMessage());
+            throw e;
+        }
+    }
+
+    @Override
+    public OrderResponse getOrderDetailsWithJwtToken(Long orderId, String jwtToken) {
+        logger.info("Request received to get order details for orderId: {}", orderId);
+
+        try {
+            //String jwtToken = getJwTokenForOrderInquiry(orderId);
+            HttpHeaders httpHeaders = createHttpHeadersForOrderInquiryWithJwt(jwtToken);
+
+            final String url = orderServiceIp + "order-service/ext/v1/orders/order" + orderId;
 
             logger.debug("url: {}, headers: {}, service: {}", url, httpHeaders, ORDER_SERVICE);
 
