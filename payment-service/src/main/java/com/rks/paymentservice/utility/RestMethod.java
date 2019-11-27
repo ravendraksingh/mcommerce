@@ -64,55 +64,21 @@ public class RestMethod {
     }
   }
 
-  /*private static <T, U> U getResponse(final HttpHeaders httpHeaders, final Class<U> responseClass,
-                                      final String url, final String serviceName, final HttpMethod httpMethod,
-                                      final T requestObject) {
-    RestTemplate restTemplate = restClientUtil.getRestTemplate(serviceName);
-    try {
-      HttpEntity httpEntity = new HttpEntity(requestObject, httpHeaders);
-      ResponseEntity<U> responseEntity = restTemplate
-          .exchange(url, httpMethod, httpEntity, responseClass);
-      *//*if(url.contains("v2/transactions/imps/status?txnDateTime=")){
-        logger.info("IMPS status response : {}" ,responseEntity.getBody());
-      }*//*
-      return responseEntity.getBody();
-    } catch (HttpStatusCodeException e) {
-      logger.error("Response Body: {}. Http Status Code error while calling external service. {}",
-          e.getResponseBodyAsString(),CommonUtils.exceptionFormatter(e));
-    } catch (ResourceAccessException e) {
-      logger.error("Micro Service unavailable error while calling external service. {}",
-          CommonUtils.exceptionFormatter(e));
-      throw new MicroServiceUnavailableException(FAILED, INTEGRATION_SERVICE_UNAVAILABLE_ERROR_CODE,
-          INTERNAL_SERVER_ERROR);
-    }
-  }*/
-
   private static <T, U> U getResponse(final HttpHeaders httpHeaders, final Class<U> responseClass,
                                       final String url, final String serviceName, final HttpMethod httpMethod,
                                       final T requestObject) {
     RestTemplate restTemplate = restClientUtil.getRestTemplate(serviceName);
     try {
       HttpEntity httpEntity = new HttpEntity(requestObject, httpHeaders);
-      ResponseEntity<U> responseEntity = restTemplate
-              .exchange(url, httpMethod, httpEntity, responseClass);
-      if(url.contains("v2/transactions/imps/status?txnDateTime=")){
-        logger.info("IMPS status response : {}" ,responseEntity.getBody());
-      }
+      ResponseEntity<U> responseEntity = restTemplate.exchange(url, httpMethod, httpEntity, responseClass);
       return responseEntity.getBody();
     } catch (HttpStatusCodeException e) {
       logger.error("Response Body: {}. Http Status Code error while calling external service. {}",
               e.getResponseBodyAsString(),CommonUtils.exceptionFormatter(e));
-      //hack for handling new oauth api httpStatusCodes
-      //if(OAUTH.equalsIgnoreCase(serviceName)){
-      //  throw OauthApiExceptionEnum.getMappedException(e.getStatusCode().value());
-      //} else {
-      //  throw ExceptionEnum.getMappedException(e.getStatusCode().value());
-      //}
       throw ExceptionEnum.getMappedException(e.getStatusCode().value());
     } catch (ResourceAccessException e) {
       logger.error("Micro Service unavailable error while calling external service. {}",
               CommonUtils.exceptionFormatter(e));
-      //pushUnavailableCodeToDatadog(serviceName);
       throw new MicroServiceUnavailableException(FAILED, INTEGRATION_SERVICE_UNAVAILABLE_ERROR_CODE,
               INTERNAL_SERVER_ERROR);
     }

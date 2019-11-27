@@ -44,7 +44,7 @@ public class PaymentServiceImpl implements IPaymentService {
         log.info("Fetching payment master details for paymentId {}.", paymentId);
 
         if(StringUtils.isBlank(String.valueOf(paymentId))) {
-                throw new BadRequestException("success", 200, "Paymment Id cannot be empty");
+                throw new BadRequestException("success", 200, "Payment Id cannot be empty");
         }
 
         Optional<PaymentMaster> data = paymentMasterRepository.findById(paymentId);
@@ -104,5 +104,21 @@ public class PaymentServiceImpl implements IPaymentService {
         requestData.setOrderDate(new Date());
         requestData.setPaymentStatus(PaymentStatus.SUCCESS.getStatus());
         return requestData;
+    }
+
+    @Override
+    public OrderResponse getOrderDetailsRemote(Long orderId) {
+        log.info("Going to fetch order details from order service via network call");
+        OrderResponse orderResponse = orderClient.getOrderDetails(orderId);
+        log.info("Response received. orderResponse: {}", orderResponse);
+        return orderResponse;
+    }
+
+    @Override
+    public OrderResponse getOrderDetailsRemoteWithJwt(Long orderId) {
+        log.info("Going to fetch order details from order service via network call");
+        OrderResponse orderResponse = orderClient.getOrderDetailsWithJwt(orderId);
+        log.info("Response received. orderResponse: {}", orderResponse);
+        return orderResponse;
     }
 }

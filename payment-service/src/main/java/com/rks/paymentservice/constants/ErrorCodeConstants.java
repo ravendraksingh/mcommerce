@@ -16,4 +16,5 @@ public class ErrorCodeConstants {
     public static final int MICRO_SERVICE_ERROR_CODE                            = 9005;
     public static final int NULL_RESPONSE_RECEIVED                              = 9006;
     public static final int ORDER_DETAILS_COULD_NOT_BE_FETCHED                  = 9007;
+    public static final int JWT_TOKEN_GENERATION_ERROR_CODE                          = 9008;
 }

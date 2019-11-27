@@ -1,27 +1,46 @@
 package com.rks.paymentservice.exceptions;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.ThreadContext;
+
 import static com.rks.paymentservice.constants.Constant.FAILED;
 import static com.rks.paymentservice.constants.Constant.INTERNAL_SERVER_ERROR;
+import static com.rks.paymentservice.constants.Constant.*;
 import static com.rks.paymentservice.constants.ErrorCodeConstants.*;
 
-public enum ExceptionEnum {
+public enum Safe_ExceptionEnum {
 
   BAD_REQUEST_EXCEPTION(400) {
     @Override
     public BaseException throwException() {
+      String isOldApi = ThreadContext.get(IS_OLD_API);
+      if (StringUtils.isEmpty(isOldApi) || Boolean.TRUE.toString().equalsIgnoreCase(isOldApi)) {
+        return new BaseException(FAILED, BAD_REQUEST_ERROR_CODE, INTERNAL_SERVER_ERROR);
+      } else {
         return new ExternalServiceErrorException(FAILED, BAD_REQUEST_ERROR_CODE, INTERNAL_SERVER_ERROR);
+      }
     }
   },
   UNAUTHORIZED_EXCEPTION(401) {
     @Override
     public BaseException throwException() {
+      String isOldApi = ThreadContext.get(IS_OLD_API);
+      if (StringUtils.isEmpty(isOldApi) || Boolean.TRUE.toString().equalsIgnoreCase(isOldApi)) {
+        return new BaseException(FAILED, UNAUTHORIZED_ERROR_CODE, INTERNAL_SERVER_ERROR);
+      } else {
         return new ExternalServiceErrorException(FAILED, UNAUTHORIZED_ERROR_CODE, INTERNAL_SERVER_ERROR);
+      }
     }
   },
   NOT_FOUND(404) {
     @Override
     public BaseException throwException() {
+      String isOldApi = ThreadContext.get(IS_OLD_API);
+      if (StringUtils.isEmpty(isOldApi) || Boolean.TRUE.toString().equalsIgnoreCase(isOldApi)) {
+        return new BaseException(FAILED, NOT_FOUND_ERROR_CODE, INTERNAL_SERVER_ERROR);
+      } else {
         return new ExternalServiceErrorException(FAILED, NOT_FOUND_ERROR_CODE, INTERNAL_SERVER_ERROR);
+      }
     }
   },
   MICRO_SERVICE_ERROR_EXCEPTION(500) {
@@ -42,12 +61,12 @@ public enum ExceptionEnum {
 
   private Integer code;
 
-  ExceptionEnum(Integer code) {
+  Safe_ExceptionEnum(Integer code) {
     this.code = code;
   }
 
   public static BaseException getMappedException(int code) {
-    for (ExceptionEnum b : ExceptionEnum.values()) {
+    for (Safe_ExceptionEnum b : Safe_ExceptionEnum.values()) {
       if (b.getCode() == code) {
         return b.throwException();
       }

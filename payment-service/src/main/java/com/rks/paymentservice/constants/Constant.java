@@ -1,6 +1,8 @@
 package com.rks.paymentservice.constants;
 
 public class Constant {
+
+    public static final String AUTHORIZATION             = "authorization";
     /**
      * Response related constants
      */
@@ -23,12 +25,21 @@ public class Constant {
     public static final String ITEM_PRICE               = "price";
 
     public static final String ORDER_SERVICE            = "order-service";
+    public static final String PAYMENT_SERVICE          = "payment-service";
+    public static final String JWT_ORDER_ID          = "orderId";
 
     public static final String ORDER_GET                = "order.get";
 
     // Exception Message
-    public static final String INTERNAL_SERVER_ERROR    = "Your request was declined due to an internal error. Please try again after sometime.";
+    public static final String INTERNAL_SERVER_ERROR    = "internal error";
     public static final String FAILED                   = "failed";
     public static final String IS_OLD_API               = "isOldApi";
 
+    public static final String JWT_SECRET_KEY_ORDER_SERVICE = "Ak37osje2360KHy#0ncWR0J$xw29";
+    public static final String JWT_SECRET_KEY_PAYMENT_SERVICE = "s7kys&923onwg81AE9$$qdvs45";
+
+    public static final String JWT_CLIENT_ID = "Client-id";
+
+    public static final String JWT_TOKEN_GENERATION_ERROR_MSG = "Error in jwt token generation";
+    public static final int JWT_EXPIRATION_TIME         = 3600000;
 }

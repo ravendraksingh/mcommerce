@@ -1,6 +1,7 @@
 package com.rks.paymentservice.controller;
 
 import com.rks.paymentservice.domain.PaymentMaster;
+import com.rks.paymentservice.dto.order.OrderResponse;
 import com.rks.paymentservice.dto.response.PaymentMasterResponse;
 import com.rks.paymentservice.repository.PaymentMasterRepository;
 import com.rks.paymentservice.service.IPaymentService;
@@ -43,5 +44,15 @@ public class PaymentController {
     @ResponseStatus(HttpStatus.CREATED)
     public PaymentMasterResponse createPayment(@RequestBody PaymentMaster request) {
         return paymentService.createPayment(request);
+    }
+
+    @GetMapping("/orders/{orderId}")
+    public OrderResponse getOrderDetailsRemote(@PathVariable("orderId") Long orderId) {
+        return paymentService.getOrderDetailsRemote(orderId);
+    }
+
+    @GetMapping("/orders/order-with-auth/{orderId}")
+    public OrderResponse getOrderDetailsRemoteWithJwt(@PathVariable("orderId") Long orderId) {
+        return paymentService.getOrderDetailsRemoteWithJwt(orderId);
     }
 }

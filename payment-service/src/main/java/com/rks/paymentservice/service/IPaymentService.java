@@ -1,9 +1,8 @@
 package com.rks.paymentservice.service;
 
 import com.rks.paymentservice.domain.PaymentMaster;
+import com.rks.paymentservice.dto.order.OrderResponse;
 import com.rks.paymentservice.dto.response.PaymentMasterResponse;
-
-import java.util.List;
 
 public interface IPaymentService {
 
@@ -14,4 +13,8 @@ public interface IPaymentService {
     PaymentMasterResponse createPayment(PaymentMaster request);
 
     PaymentMasterResponse createPaymentForNewOrder(Long orderId);
+
+    OrderResponse getOrderDetailsRemote(Long orderId);
+
+    OrderResponse getOrderDetailsRemoteWithJwt(Long orderId);
 }
