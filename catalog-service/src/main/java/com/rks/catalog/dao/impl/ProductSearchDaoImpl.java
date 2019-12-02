@@ -10,6 +10,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -80,6 +81,7 @@ public class ProductSearchDaoImpl implements ProductSearchDao {
             }
         }
         log.info("query --> {}", query);
+        query.with(Sort.by(Sort.Direction.DESC, "sku"));
         productList = mongoTemplate.find(query, Product.class);
 
         if (productList == null) {
