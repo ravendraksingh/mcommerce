@@ -1,4 +1,4 @@
-package com.rks.catalog.models.product;
+package com.rks.catalog.models.category;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.rks.catalog.models.BaseEntity;
@@ -8,27 +8,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collection = "products")
-public class Product extends BaseEntity {
+@Document(collection = "categories")
+public class Category extends BaseEntity {
     private String id;
-    private String type;
-    private String sku;
     private String name;
-    private List<String> categories;
     private String description;
-    private ShippingInfo shipping;
-    private PriceInfo pricing;
-    private DetailInfo details;
+    private Map<String, Object> attr;
 }
-
-
-
-
-

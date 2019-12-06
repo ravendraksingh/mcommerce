@@ -1,35 +1,49 @@
 package com.rks.catalog.bootstrap;
 
+import com.rks.catalog.models.category.Category;
 import com.rks.catalog.models.product.*;
-import com.rks.catalog.repositories.ProductReposMongo;
+import com.rks.catalog.repositories.CategoryRepository;
+import com.rks.catalog.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@Component
+//@Component
 public class DataLoader implements CommandLineRunner {
 
     @Autowired
-    private ProductReposMongo productReposMongo;
+    private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryReposMongo;
 
     @Override
     public void run(String... args) throws Exception {
         //deleteAllProducts();
         //createFewProducts();
-        listAllProducts();
+        //listAllProducts();
+        //createFewCategories();
+    }
+
+    private void createFewCategories() {
+        Category c1 = Category.builder().name("Electronics").description("Electronic Items").build();
+        Map attr = new HashMap();
+        attr.put("onSale", "yes");
+        attr.put("promo-code", Arrays.asList(new String[]{"DHOOM-2020", "CLOUD-9", "ANNIV", "COBOL-45", "AREA-63"}));
+        c1.setAttr(attr);
+        categoryReposMongo.save(c1);
     }
 
     private void listAllProducts() {
-        List<Product> productList = productReposMongo.findByType("Coffee-Mug");
+        List<Product> productList = productRepository.findByType("Coffee-Mug");
         productList.forEach(product -> {
             System.out.println(product);
         });
     }
 
     private void deleteAllProducts() {
-        productReposMongo.deleteAll();
+        productRepository.deleteAll();
     }
 
     private void createFewProducts() {
@@ -37,11 +51,11 @@ public class DataLoader implements CommandLineRunner {
         DimensionInfo dimensionDetails = DimensionInfo.builder().width(10).height(10).depth(1).build();
         ShippingInfo shippingDetails = ShippingInfo.builder().weight(5).dimensions(dimensionDetails).build();
 
-        /*Product newProduct = Product.builder().type("Coffee-Mug").sku("CM-01-R").title("Coffee mug model 01 red")
+        Product newProduct = Product.builder().type("Coffee-Mug").sku("CM-01-R").name("Coffee mug model 01 red")
                 .description("A great coffee mug")
                 .shipping(shippingDetails)
-                .pricing(price)
-                .build();*/
+                .pricing(priceInfo)
+                .build();
 
         DetailInfo detailInfo = new DetailInfo();
 
@@ -58,36 +72,36 @@ public class DataLoader implements CommandLineRunner {
 
         detailInfo.setInfoList(infoMap);
 
-        Product p1 = Product.builder().sku("aa-kk-vol-1").type("Audio Album").title("Kishore Kumar Vol-1")
+        Product p1 = Product.builder().sku("aa-kk-vol-1").type("Audio Album").name("Kishore Kumar Vol-1")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
                 .pricing(PriceInfo.builder().retail(500d).retail(480d).savings(20d).build())
                 //.details(detailInfo)
                 .build();
-        productReposMongo.save(p1);
+        productRepository.save(p1);
 
-        Product p2 = Product.builder().sku("aa-kk-vol-2").type("Audio Album").title("Kishore Kumar Vol-2")
+        Product p2 = Product.builder().sku("aa-kk-vol-2").type("Audio Album").name("Kishore Kumar Vol-2")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
                 .pricing(PriceInfo.builder().retail(500d).retail(450d).savings(50d).build())
                 //.details(detailInfo)
                 .build();
-        productReposMongo.save(p2);
+        productRepository.save(p2);
 
-        Product p3 = Product.builder().sku("aa-kk-vol-3").type("Audio Album").title("Kishore Kumar Vol-3")
+        Product p3 = Product.builder().sku("aa-kk-vol-3").type("Audio Album").name("Kishore Kumar Vol-3")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
                 .pricing(PriceInfo.builder().retail(500d).retail(400d).savings(100d).build())
                 //.details(detailInfo)
                 .build();
-        productReposMongo.save(p3);
+        productRepository.save(p3);
 
-        Product p4 = Product.builder().sku("aa-kk-vol-4").type("Audio Album").title("Kishore Kumar Vol-4")
+        Product p4 = Product.builder().sku("aa-kk-vol-4").type("Audio Album").name("Kishore Kumar Vol-4")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
                 .pricing(PriceInfo.builder().retail(800d).retail(800d).savings(0d).build())
                 //.details(detailInfo)
                 .build();
-        productReposMongo.save(p4);
+        productRepository.save(p4);
     }
 }

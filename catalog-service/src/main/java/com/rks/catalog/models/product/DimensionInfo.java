@@ -1,5 +1,6 @@
 package com.rks.catalog.models.product;
 
+import com.rks.catalog.models.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DimensionInfo {
+public class DimensionInfo extends BaseEntity {
     private int width;
     private int height;
     private int depth;

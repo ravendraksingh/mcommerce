@@ -4,7 +4,6 @@ import com.rks.catalog.dao.ProductSearchDao;
 import com.rks.catalog.exceptions.BadRequestException;
 import com.rks.catalog.exceptions.NotFoundException;
 import com.rks.catalog.models.product.Product;
-import com.rks.catalog.service.impl.ProductSearchImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
@@ -23,15 +22,15 @@ import java.util.regex.Pattern;
 @Component
 public class ProductSearchDaoImpl implements ProductSearchDao {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductSearchImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(ProductSearchDaoImpl.class);
 
     @Autowired
     private MongoTemplate mongoTemplate;
 
     @Override
     public List<Product> searchProducts(Map<String, String[]> searchCriteriaMap) {
-        List<Product> productList;
 
+        List<Product> productList;
         Query query = new Query();
 
         log.info("query before modification --> {}", query);
@@ -89,5 +88,4 @@ public class ProductSearchDaoImpl implements ProductSearchDao {
         }
         return productList;
     }
-
 }

@@ -1,13 +1,12 @@
 package com.rks.catalog;
 
-import com.rks.catalog.repositories.ProductReposMongo;
+import com.rks.catalog.repositories.ProductRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 //@EnableDiscoveryClient
-@EnableMongoRepositories(basePackageClasses = ProductReposMongo.class)
+@EnableMongoRepositories(basePackageClasses = ProductRepository.class)
 @SpringBootApplication
 public class CatalogServiceApplication {
 
