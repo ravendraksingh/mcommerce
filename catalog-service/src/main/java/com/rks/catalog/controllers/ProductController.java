@@ -2,7 +2,6 @@ package com.rks.catalog.controllers;
 
 import com.rks.catalog.cart.Cart;
 import com.rks.catalog.models.product.Product;
-import com.rks.catalog.repositories.ProductRepository;
 import com.rks.catalog.service.IProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

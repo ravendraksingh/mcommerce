@@ -9,5 +9,5 @@ import org.mapstruct.factory.Mappers;
 public interface CategoryMapper {
     CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
     CategoryResponse categoryToCategoryResponse(Category category) ;
-    Category CategoryResponseToCategory(CategoryResponse categoryResponse);
+    //Category CategoryResponseToCategory(CategoryResponse categoryResponse);
 }

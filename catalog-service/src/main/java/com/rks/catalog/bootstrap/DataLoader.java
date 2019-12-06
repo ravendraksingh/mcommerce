@@ -6,11 +6,16 @@ import com.rks.catalog.repositories.CategoryRepository;
 import com.rks.catalog.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.cache.CacheManager;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-//@Component
+@Component
 public class DataLoader implements CommandLineRunner {
+
+    @Autowired
+    private CacheManager cacheManager;
 
     @Autowired
     private ProductRepository productRepository;
@@ -24,6 +29,11 @@ public class DataLoader implements CommandLineRunner {
         //createFewProducts();
         //listAllProducts();
         //createFewCategories();
+        clearAllCache();
+    }
+
+    private void clearAllCache() {
+        cacheManager.getCacheNames().parallelStream().forEach(name -> cacheManager.getCache(name).clear());
     }
 
     private void createFewCategories() {

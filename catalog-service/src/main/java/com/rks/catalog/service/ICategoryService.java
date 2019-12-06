@@ -8,4 +8,5 @@ import java.util.List;
 public interface ICategoryService {
     CategoryResponse getById(String categoryId);
     List<Category> getCategoriesByNameRegex(String searchString);
+    Category getByName(String name);
 }

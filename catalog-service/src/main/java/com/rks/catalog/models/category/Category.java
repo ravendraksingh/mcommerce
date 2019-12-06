@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,5 +21,5 @@ public class Category extends BaseEntity {
     private String id;
     private String name;
     private String description;
-    private Map<String, Object> attr;
+    private Map<String, String> attr = new HashMap<>();
 }

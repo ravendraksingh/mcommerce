@@ -1,5 +1,6 @@
 package com.rks.catalog.service.impl;
 
+import com.rks.catalog.cachedData.MostViewedCategories;
 import com.rks.catalog.dto.category.CategoryResponse;
 import com.rks.catalog.exceptions.NotFoundException;
 import com.rks.catalog.mapper.CategoryMapper;
@@ -31,6 +32,7 @@ public class CategoryServiceImpl implements ICategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
+
     @Override
     public CategoryResponse getById(String categoryId) {
         log.info("Going to fetch name for name id: {}", categoryId);
@@ -56,7 +58,18 @@ public class CategoryServiceImpl implements ICategoryService {
         if (categoryList == null) {
             throw new NotFoundException("Category not found for: " + searchString);
         }
-        log.info("Category fetched");
+        log.info("Category fetched. Updating mostViewCategories data in cache");
         return categoryList;
+    }
+
+    @Cacheable(key="#name")
+    @Override
+    public Category getByName(String name) {
+        log.info("Going to search categories for: {}", name);
+        Category category = categoryRepository.findByName(name);
+        if (category == null) {
+            throw new NotFoundException("Category not found for: " + name);
+        }
+        return category;
     }
 }

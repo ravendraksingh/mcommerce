@@ -54,11 +54,9 @@ public class Memcached implements Cache {
         }
         if (value == null) {
             log.debug("cache miss for key: " + key.toString());
-            System.out.println("cache miss for key: " + key.toString());
             return null;
         }
         log.debug("cache hit for key: " + key.toString());
-        System.out.println("cache hit for key: " + key.toString());
         return new SimpleValueWrapper(value);
     }
 
@@ -67,7 +65,6 @@ public class Memcached implements Cache {
         if (value != null) {
             cache.set(key.toString(), expiration, value);
             log.debug("cache put for key: " + key.toString());
-            System.out.println("cache put for key: " + key.toString());
         }
     }
 
@@ -75,14 +72,12 @@ public class Memcached implements Cache {
     public void evict(final Object key) {
         this.cache.delete(key.toString());
         log.debug("cache delete for key: " + key.toString());
-        System.out.println("cache delete for key: " + key.toString());
     }
 
     @Override
     public void clear() {
         cache.flush();
         log.debug("cache clear completed");
-        System.out.println("cache clear completed");
     }
 
     @Override
