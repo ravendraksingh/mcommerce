@@ -1,4 +1,4 @@
-package com.rks.orderservice.exception;
+package com.rks.mcommon.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

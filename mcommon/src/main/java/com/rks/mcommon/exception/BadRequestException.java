@@ -1,4 +1,4 @@
-package com.rks.orderservice.exception;
+package com.rks.mcommon.exception;
 
 public class BadRequestException extends BaseException {
     private static final long serialVersionUID = 1180657952950212523L;

@@ -1,10 +1,8 @@
-package com.rks.orderservice.utility;
+package com.rks.mcommon.utility;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.hash.Hashing;
-
-import com.rks.orderservice.exception.BaseException;
-import com.rks.orderservice.util.StatusEnum;
+import com.rks.mcommon.exception.BaseException;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +20,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import static com.rks.orderservice.constants.ErrorCodeConstants.DATE_PARSE_ERROR;
+import static com.rks.mcommon.constants.CommonConstants.FAILURE;
+import static com.rks.mcommon.constants.CommonErrorCodeConstants.DATE_PARSE_ERROR;
 import static java.util.Calendar.*;
 
 public class CommonUtils {
@@ -357,7 +356,7 @@ public class CommonUtils {
       return sdf.parse(sdf.format(new Date(inDate)));
     } catch (Exception e) {
       logger.error("Error in converting long:{} to date for inputFormat:{}", date, inputFormat);
-      throw new BaseException(StatusEnum.FAILURE.getStatus(), DATE_PARSE_ERROR,
+      throw new BaseException(FAILURE, DATE_PARSE_ERROR,
           StringUtils
               .join("Invalid date format for date: ", date, " must be in format: ", inputFormat));
     }

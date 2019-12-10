@@ -1,9 +1,8 @@
-package com.rks.orderservice.exception;
+package com.rks.mcommon.exception;
 
 
-import com.rks.orderservice.dto.response.ErrorResponse;
-import com.rks.orderservice.util.StatusEnum;
-import com.rks.orderservice.utility.CommonUtils;
+import com.rks.mcommon.dto.response.ErrorResponse;
+import com.rks.mcommon.utility.CommonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -21,7 +20,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import static com.rks.orderservice.constants.Constant.FAILED;
+import static com.rks.mcommon.constants.CommonConstants.FAILED;
+import static com.rks.mcommon.constants.CommonConstants.PENDING;
 
 @ControllerAdvice
 public class RestExceptionHandler {
@@ -104,7 +104,7 @@ public class RestExceptionHandler {
     return new ResponseEntity<>(this.getErrorObject(e), HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
-  @ExceptionHandler({ServletRequestBindingException.class,
+  /*@ExceptionHandler({ServletRequestBindingException.class,
       HttpMediaTypeNotSupportedException.class})
   public ResponseEntity<ErrorResponse> badRequestExceptionHandler(Exception e) {
     logger.error("Bad request: invalid header {}", CommonUtils.exceptionFormatter(e));
@@ -112,7 +112,7 @@ public class RestExceptionHandler {
     errorResponse.setStatus(FAILED);
     errorResponse.setMessage(e.getMessage());
     return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
-  }
+  }*/
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ErrorResponse> badRequestExceptionHandler2(
@@ -167,7 +167,7 @@ public class RestExceptionHandler {
   public ResponseEntity<ErrorResponse> exceptionHandler(Exception e) {
     logger.error("Unhandled exception {}",CommonUtils.exceptionFormatter(e));
     ErrorResponse errorResponse = new ErrorResponse();
-    errorResponse.setStatus(StatusEnum.PENDING.getStatus());
+    errorResponse.setStatus(PENDING);
     errorResponse.setMessage("Error occurred\n\nPlease try again in sometime");
     logger.info("Status changed to pending {}", errorResponse);
     return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
