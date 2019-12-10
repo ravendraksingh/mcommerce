@@ -1,9 +1,9 @@
 package com.rks.catalog.dao.impl;
 
 import com.rks.catalog.dao.ProductSearchDao;
-import com.rks.catalog.exceptions.BadRequestException;
-import com.rks.catalog.exceptions.NotFoundException;
 import com.rks.catalog.models.product.Product;
+import com.rks.mcommon.exception.BadRequestException;
+import com.rks.mcommon.exception.NotFoundException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
@@ -14,10 +14,17 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
+import com.rks.mcommon.constants.CommonConstants.*;
+import com.rks.mcommon.constants.CommonErrorCodeConstants.*;
 
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import static com.rks.catalog.constants.Constants.PRODUCT_NOT_FOUND_ERR_MSG;
+import static com.rks.mcommon.constants.CommonConstants.FAILED;
+import static com.rks.mcommon.constants.CommonErrorCodeConstants.BAD_REQUEST_ERROR_CODE;
+import static com.rks.mcommon.constants.CommonErrorCodeConstants.NOT_FOUND_ERROR_CODE;
 
 @Component
 public class ProductSearchDaoImpl implements ProductSearchDao {
@@ -44,7 +51,7 @@ public class ProductSearchDaoImpl implements ProductSearchDao {
                     String[] temp = value.split(":");
 
                     if (temp.length != 2) {
-                        throw new BadRequestException("Bad request");
+                        throw new BadRequestException(FAILED, BAD_REQUEST_ERROR_CODE, "Bad request");
                     }
 
                     String operator = temp[0];
@@ -53,7 +60,7 @@ public class ProductSearchDaoImpl implements ProductSearchDao {
 
                     if (StringUtils.equalsAnyIgnoreCase(operator,"lte", "gte")) {
                         if (!NumberUtils.isCreatable(temp[1])) {
-                            throw new BadRequestException("Bad request");
+                            throw new BadRequestException(FAILED, BAD_REQUEST_ERROR_CODE, "Bad request");
                         }
                         doubleValue = NumberUtils.createDouble(temp[1]);
                     } else if (StringUtils.equalsAnyIgnoreCase(operator,"regex")) {
@@ -84,7 +91,7 @@ public class ProductSearchDaoImpl implements ProductSearchDao {
         productList = mongoTemplate.find(query, Product.class);
 
         if (productList == null) {
-            throw new NotFoundException("Products not found for the mentioned criteria");
+            throw new NotFoundException(FAILED, NOT_FOUND_ERROR_CODE, PRODUCT_NOT_FOUND_ERR_MSG);
         }
         return productList;
     }

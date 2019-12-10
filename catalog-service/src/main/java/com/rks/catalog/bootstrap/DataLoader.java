@@ -6,7 +6,9 @@ import com.rks.catalog.repositories.CategoryRepository;
 import com.rks.catalog.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.CacheManager;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -14,9 +16,9 @@ import java.util.*;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    @Autowired
+    /*@Autowired
     private CacheManager cacheManager;
-
+*/
     @Autowired
     private ProductRepository productRepository;
 
@@ -29,12 +31,12 @@ public class DataLoader implements CommandLineRunner {
         //createFewProducts();
         //listAllProducts();
         //createFewCategories();
-        clearAllCache();
+        //clearAllCache();
     }
 
-    private void clearAllCache() {
+    /*private void clearAllCache() {
         cacheManager.getCacheNames().parallelStream().forEach(name -> cacheManager.getCache(name).clear());
-    }
+    }*/
 
     private void createFewCategories() {
         Category c1 = Category.builder().name("Electronics").description("Electronic Items").build();

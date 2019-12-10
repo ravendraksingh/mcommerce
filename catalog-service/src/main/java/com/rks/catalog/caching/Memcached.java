@@ -15,11 +15,8 @@ import java.util.concurrent.Callable;
 public class Memcached implements Cache {
 
     private static final Logger log = LoggerFactory.getLogger(Memcached.class);
-
     private String name;
-
     private MemcachedClient cache;
-
     private int expiration;
 
     public Memcached(String name, String memcachedAddresses, int expiration) throws IOException {
