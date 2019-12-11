@@ -13,6 +13,7 @@ import com.rks.userservice.repository.UserRepository;
 import com.rks.userservice.security.JwtTokenProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,6 +31,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.Collections;
 
+@ConditionalOnProperty(value = "app.security.enabled",
+        havingValue = "true",
+        matchIfMissing = false)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

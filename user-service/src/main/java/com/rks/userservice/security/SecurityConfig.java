@@ -1,6 +1,7 @@
 package com.rks.userservice.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -74,8 +75,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                 "/configuration/security", "/swagger-ui.html", "/webjars/**",
                                 "/swagger-resources/configuration/ui","/swagger-ui.html").
                         permitAll()
-                .anyRequest()
-                        .authenticated();
+                    .anyRequest()
+                        .permitAll();
+                //.anyRequest()
+                //        .authenticated();
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
