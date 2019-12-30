@@ -1,0 +1,77 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk
+        #environment:
+        #  DOCKER_USER: ********
+        #  DOCKER_PASS: ********
+
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    #working_directory: ~/repo
+    working_directory: ~/repo/catalog-service
+
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+      ######################   Ravendra  ########################
+      # setup testing env
+      #- setup_remote_docker:
+      #    docker_layer_caching: true
+      #- run:
+      #    name: Login to DockerHub
+      #    command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      #     - run:
+      #          name: Decrpyt Secrets
+      #          command: openssl enc -d -aes-256-ecb -md md5 -in src/main/resources/application-prod.properties.secrets -out src/main/resources/application-prod.properties -k $SECRETS_KEY
+      ###########################################################
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: mvn dependency:go-offline
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+
+      # run tests! and gen code coverage
+      - run: mvn integration-test cobertura:cobertura
+
+      - store_test_results:
+          path: target/surefire-reports
+
+      - run:
+          name: Send to CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
+
+      ######################   Ravendra  ########################
+      # package into a jar
+      #- run: mvn clean package
+
+      # build and push docker image to docker hub
+      #- run: mvn clean compile jib:build -Dimage=ravendraksingh/spring5-mvc-rest:$CIRCLE_BUILD_NUM
+
+      # store raw contents of src code
+      #- store_artifacts:
+      #    path: target/classes
+      #    destination: spring5-mvc-rest
+      ###########################################################
