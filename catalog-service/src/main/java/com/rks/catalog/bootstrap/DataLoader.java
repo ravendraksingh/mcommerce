@@ -27,10 +27,10 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //deleteAllProducts();
-        //createFewProducts();
-        //listAllProducts();
-        //createFewCategories();
+        deleteAllProducts();
+        createFewProducts();
+        listAllProducts();
+        createFewCategories();
         //clearAllCache();
     }
 

@@ -9,7 +9,7 @@ import java.util.Map;
 @Data
 public class CategoryResponse {
     private String id;
-    private String category;
+    private String name;
     private String description;
     private Map<String, Object> attr;
 }
