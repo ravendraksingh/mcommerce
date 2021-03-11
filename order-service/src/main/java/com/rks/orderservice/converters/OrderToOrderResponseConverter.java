@@ -19,6 +19,7 @@ public class OrderToOrderResponseConverter implements Converter<Order, OrderResp
         context.getDestination().setOrderId(context.getSource().getId());
         context.getDestination().setOrderDate(context.getSource().getOrderDate());
         context.getDestination().setOrderStatus(context.getSource().getOrderStatus());
+        context.getDestination().setPaymentStatus(context.getSource().getPaymentStatus());
 
         if (context.getSource().getItems() != null) {
             for (Item i : context.getSource().getItems()) {

@@ -3,8 +3,9 @@ package com.rks.orderservice.dto.response;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.rks.orderservice.domain.Item;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -31,6 +32,9 @@ public class OrderResponse extends BaseResponse {
 
     @JsonProperty(ORDER_STATUS)
     private String orderStatus;
+
+    @JsonProperty(PAYMENT_STATUS)
+    private String paymentStatus;
 
     @Pattern(regexp = "^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*$", message = "Amount must be a positive number with maximal 2 decimal places")
     @JsonProperty(value = ORDER_AMOUNT, required = true)

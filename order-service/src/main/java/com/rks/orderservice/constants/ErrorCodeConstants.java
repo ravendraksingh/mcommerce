@@ -8,7 +8,7 @@ public class ErrorCodeConstants {
     public static final int NULL_RESPONSE_RECEIVED_ERROR_CODE                   = 1108;
     public static final int ORDER_DETAILS_COULD_NOT_BE_FETCHED                  = 1109;
 
-    public static final int INVALID_ORDER_ID                  = 1110;
-    public static final int UPDATE_ORDER_FAILED_ERROR_CODE                  = 1111;
-    public static final int DB_NOT_AVAILABLE_ERROR_CODE                  = 1112;
+    public static final int INVALID_ORDER_ID_CODE                               = 1110;
+    public static final int UPDATE_ORDER_FAILED_ERROR_CODE                      = 1111;
+    public static final int DB_NOT_AVAILABLE_ERROR_CODE                         = 1112;
 }

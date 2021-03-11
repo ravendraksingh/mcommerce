@@ -4,6 +4,7 @@ import com.rks.mcommon.exception.BaseException;
 import com.rks.mcommon.exception.NotFoundException;
 import com.rks.orderservice.domain.Order;
 import com.rks.orderservice.dto.request.OrderRequest;
+import com.rks.orderservice.dto.request.UpdateOrderRequest;
 import com.rks.orderservice.dto.response.OrderResponse;
 import com.rks.orderservice.mappers.OrderMapper;
 import com.rks.orderservice.rabbitmq.OrderCreatedMessageProducer;
@@ -25,7 +26,7 @@ import static com.rks.mcommon.constants.CommonErrorCodeConstants.DB_NOT_AVAILABL
 import static com.rks.mcommon.constants.CommonErrorCodeConstants.INTERNAL_SERVER_ERROR_CODE;
 import static com.rks.orderservice.constants.Constant.INTERNAL_SERVER_ERROR_MSG;
 import static com.rks.orderservice.constants.Constant.INVALID_ORDER_ID_MSG;
-import static com.rks.orderservice.constants.ErrorCodeConstants.INVALID_ORDER_ID;
+import static com.rks.orderservice.constants.ErrorCodeConstants.INVALID_ORDER_ID_CODE;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -92,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
         try {
             Optional<Order> optionalOrder = orderRepository.findById(orderId);
             if (!optionalOrder.isPresent()) {
-                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID, INVALID_ORDER_ID_MSG);
+                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID_CODE, INVALID_ORDER_ID_MSG);
                 log.error("Exception occurred while fetching the order for orderId {}. ResponseCode: {}. Message: {}",
                         orderId, exception.getCode(), exception.getMessage());
                 throw exception;
@@ -115,7 +116,7 @@ public class OrderServiceImpl implements OrderService {
         try {
             Optional<Order> optionalOrder = orderRepository.findById(orderId);
             if (!optionalOrder.isPresent()) {
-                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID, INVALID_ORDER_ID_MSG);
+                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID_CODE, INVALID_ORDER_ID_MSG);
                 log.error("Exception occurred while fetching the order for orderId {}. ResponseCode: {}. Message: {}",
                         orderId, exception.getCode(), exception.getMessage());
                 throw exception;
@@ -159,7 +160,25 @@ public class OrderServiceImpl implements OrderService {
             log.error("Exception occurred. Message: {}.", e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
+    }
 
+    public OrderResponse updateOrder(Long orderId, UpdateOrderRequest request) {
+        log.debug("Updating order with orderId: {}" + orderId );
+        Optional<Order> optionalOrder = orderRepository.findById(orderId);
+        if (!optionalOrder.isPresent()) {
+            throw new NotFoundException(FAILED, INVALID_ORDER_ID_CODE, INVALID_ORDER_ID_MSG);
+        }
+        Order order = optionalOrder.get();
+        if (request.getOrderStatus() != null) {
+            order.setOrderStatus(request.getOrderStatus());
+        }
+        if(request.getPaymentStatus() !=null) {
+            order.setPaymentStatus(request.getPaymentStatus());
+        }
+        Order savedOrder = orderRepository.save(order);
+        OrderResponse response = new OrderResponse();
+        orderMapper.map(savedOrder, response);
+        return response;
     }
 
 }

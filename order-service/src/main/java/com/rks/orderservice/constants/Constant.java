@@ -5,11 +5,12 @@ public class Constant {
     /**
      * Order related constants
      */
-    public static final String ORDER_DATE                 = "order_date";
+    public static final String ORDER_DATE               = "order_date";
     public static final String ORDER_ID                 = "order_id";
     public static final String ORDER_STATUS             = "order_status";
     public static final String ITEMS_IN_ORDER           = "items";
     public static final String ORDER_AMOUNT             = "order_amount";
+    public static final String PAYMENT_STATUS           = "payment_status";
 
 
     /**

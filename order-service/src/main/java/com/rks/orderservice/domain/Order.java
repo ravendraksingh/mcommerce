@@ -34,7 +34,7 @@ public class Order extends BaseEntity {
     private String orderStatus;
 
     @Column(name = "payment_status")
-    private String paymentStatus
+    private String paymentStatus;
 
     @Column(name = "created_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",insertable= false, updatable = false)
     private Date createdDate;
