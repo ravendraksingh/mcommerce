@@ -18,12 +18,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/order-service/int")
 public class OrderControllerInternal {
-
     public static final Logger log = LoggerFactory.getLogger(OrderControllerInternal.class);
 
-    @Autowired
     private OrderService orderService;
 
+    @Autowired
+    public OrderControllerInternal(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @ApiOperation(
+            httpMethod = "GET",
+            value = "Get All Orders"
+    )
     @GetMapping("/v1/orders")
     public List<Order> getAllOrders() {
         return orderService.findAllOrders();
@@ -57,7 +64,6 @@ public class OrderControllerInternal {
                     response = ErrorResponse.class
             )
     })
-    @GetMapping("/v1/orders/{orderId}")
     public OrderResponse getOrder(@PathVariable(value="orderId") Long orderId) {
         return orderService.findOrderById(orderId);
     }
@@ -93,5 +99,14 @@ public class OrderControllerInternal {
     })
     public OrderResponse createOrder(@RequestBody OrderRequest orderRequest) {
         return orderService.createNewOrder(orderRequest);
+    }
+
+    @ApiOperation(
+            httpMethod = "DELETE",
+            value = "Delete All Orders"
+    )
+    @DeleteMapping("/v1/orders")
+    public void deleteAllOrders() {
+        orderService.deleteAllOrders();
     }
 }

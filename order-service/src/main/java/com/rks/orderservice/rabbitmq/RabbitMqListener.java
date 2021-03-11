@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.annotation.RabbitListeners;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ public class RabbitMqListener {
 
     private static final Logger log = LoggerFactory.getLogger(RabbitListeners.class);
 
-    //@RabbitListener(queues="${rabbitmq.queueName}")
+    @RabbitListener(queues="${rabbitmq.queueName}")
     public void listen(byte[] message) {
     //public void listen(OrderMessage message) {
         String msg = new String(message);

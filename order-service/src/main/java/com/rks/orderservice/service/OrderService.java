@@ -13,4 +13,5 @@ public interface OrderService {
     OrderResponse findOrderById(Long orderId);
     void updateOrderStatus(Long orderId, String orderStatus);
     OrderResponse createNewOrder(OrderRequest orderRequest);
+    void deleteAllOrders();
 }

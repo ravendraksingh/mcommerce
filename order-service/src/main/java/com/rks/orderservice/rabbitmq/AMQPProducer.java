@@ -8,11 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class AMQPProducer {
 
-    @Autowired
     private RabbitTemplate rabbitTemplate;
+    private RabbitMQProperties rabbitMQProperties;
 
     @Autowired
-    RabbitMQProperties rabbitMQProperties;
+    public AMQPProducer(RabbitTemplate rabbitTemplate, RabbitMQProperties rabbitMQProperties) {
+        this.rabbitTemplate = rabbitTemplate;
+        this.rabbitMQProperties = rabbitMQProperties;
+    }
 
     public void sendMessage(Notification msg) {
         System.out.println("Send msg = " + msg.toString());

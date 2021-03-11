@@ -4,14 +4,12 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.rks.orderservice.domain.Order;
+import com.rks.mcommon.exception.UnauthorizedAccessException;
+import com.rks.mcommon.utility.CommonUtils;
 import com.rks.orderservice.dto.request.OrderRequest;
 import com.rks.orderservice.dto.response.ErrorResponse;
 import com.rks.orderservice.dto.response.OrderResponse;
-import com.rks.orderservice.exception.UnauthorizedAccessException;
 import com.rks.orderservice.service.OrderService;
-import com.rks.orderservice.utility.CommonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -23,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 
+import static com.rks.mcommon.constants.CommonConstants.*;
 import static com.rks.orderservice.constants.Constant.*;
 
 @Api(value = "Order Service", description = "All APIs of order service")

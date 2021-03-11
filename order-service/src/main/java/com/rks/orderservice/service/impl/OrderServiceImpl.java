@@ -1,12 +1,11 @@
 package com.rks.orderservice.service.impl;
 
+import com.rks.mcommon.exception.BaseException;
+import com.rks.mcommon.exception.NotFoundException;
 import com.rks.orderservice.domain.Order;
 import com.rks.orderservice.dto.request.OrderRequest;
 import com.rks.orderservice.dto.response.OrderResponse;
-import com.rks.orderservice.exception.BaseException;
-import com.rks.orderservice.exception.NotFoundException;
 import com.rks.orderservice.mappers.OrderMapper;
-import com.rks.orderservice.rabbitmq.AMQPMessageProducer;
 import com.rks.orderservice.rabbitmq.OrderCreatedMessageProducer;
 import com.rks.orderservice.rabbitmq.OrderMessage;
 import com.rks.orderservice.repository.OrderRepository;
@@ -21,26 +20,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.rks.orderservice.constants.Constant.*;
-import static com.rks.orderservice.constants.Constant.INTERNAL_SERVER_ERROR;
-import static com.rks.orderservice.constants.ErrorCodeConstants.*;
+import static com.rks.mcommon.constants.CommonConstants.FAILED;
+import static com.rks.mcommon.constants.CommonConstants.INTERNAL_SERVER_ERROR;
+import static com.rks.mcommon.constants.CommonErrorCodeConstants.INTERNAL_SERVER_ERROR_CODE;
+import static com.rks.orderservice.constants.Constant.INTERNAL_SERVER_ERROR_MSG;
+import static com.rks.orderservice.constants.Constant.INVALID_ORDER_ID_MSG;
+import static com.rks.orderservice.constants.ErrorCodeConstants.INVALID_ORDER_ID;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
     private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
 
-    @Autowired
     private OrderRepository orderRepository;
-
-    @Autowired
-    private AMQPMessageProducer producer;
-
-    @Autowired
     private OrderCreatedMessageProducer orderCreatedMessageProducer;
+    private OrderMapper orderMapper;
 
     @Autowired
-    private OrderMapper orderMapper;
+    public OrderServiceImpl(OrderRepository orderRepository, OrderCreatedMessageProducer orderCreatedMessageProducer, OrderMapper orderMapper) {
+        this.orderRepository = orderRepository;
+        this.orderCreatedMessageProducer = orderCreatedMessageProducer;
+        this.orderMapper = orderMapper;
+    }
 
     @Override
     public OrderResponse createNewOrder(final OrderRequest orderRequest) {
@@ -51,25 +52,23 @@ public class OrderServiceImpl implements OrderService {
             request.setOrderStatus(StatusEnum.ORDER_CREATED.getStatus());
 
             Order savedOrder = orderRepository.save(request);
-            log.info("Order created successfully.");
+            log.debug("Order created successfully. OrderId: "+savedOrder.getId());
 
             //Sending data to RabbitMQ
-            log.info("Going to send message to RabbitMQ");
+            log.debug("Sending new order created message to RabbitMQ. OrderId: "+savedOrder.getId());
 
-            OrderMessage message = new OrderMessage();
-            message.setOrderId(savedOrder.getId());
-            //message.setOrderDate(savedOrder.getOrderDate());
-            message.setOrderStatus(savedOrder.getOrderStatus());
-            producer.sendMessage(message);
+            OrderMessage message = new OrderMessage(savedOrder.getId(), savedOrder.getOrderStatus());
+            //producer.sendMessage(message);
+            log.debug("Inside OrderServiceImpl. OrderMessage is {}", message);
             orderCreatedMessageProducer.sendMessage(message);
-            sendMessageToOrderQueue(savedOrder);
-
+            //sendMessageToOrderQueue(savedOrder);
             return createOrderResponseForOrder(savedOrder);
-
         } catch (Exception e) {
-            BaseException ex = new BaseException(FAILED, DB_NOT_AVAILABLE_ERROR_CODE, DB_NOT_AVAILABLE_ERROR_MSG);
-            log.error("Exception occurred. Message {}. ResponseCode: {}. Message: {}", ex.getCode(), ex.getMessage());
-            throw ex;
+            e.printStackTrace();
+            //BaseException ex = new BaseException(FAILED, DB_NOT_AVAILABLE_ERROR_CODE, DB_NOT_AVAILABLE_ERROR_MSG);
+            //log.error("Exception occurred. Message {}. ResponseCode: {}. Message: {}", ex.getCode(), ex.getMessage());
+            //throw ex;
+            throw e;
         }
     }
 
@@ -157,6 +156,17 @@ public class OrderServiceImpl implements OrderService {
             log.error("Exception occurred. Message: {}.", e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    public void deleteAllOrders() {
+        try {
+            log.debug("Deleting all orders.");
+            orderRepository.deleteAll();
+        } catch (Exception e) {
+            log.error("Exception occurred. Message: {}.", e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 
 }

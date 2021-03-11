@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static com.rks.orderservice.constants.Constant.RESPONSE_CODE;
+import static com.rks.mcommon.constants.CommonConstants.RESPONSE_CODE;
 
 @Data
 @NoArgsConstructor

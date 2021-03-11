@@ -1,6 +1,7 @@
 package com.rks.orderservice.bootstrap;
 
 import com.rks.orderservice.converters.NotInUse_OrderConverter;
+import com.rks.orderservice.domain.Item;
 import com.rks.orderservice.domain.Order;
 import com.rks.orderservice.dto.response.OrderResponse;
 import com.rks.orderservice.repository.OrderRepository;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -28,13 +30,12 @@ public class DataLoader implements CommandLineRunner {
         this.orderService = orderService;
     }
 
-
     @Override
     public void run(String... args) throws Exception {
-        //int count = orderService.findAllOrders().size();
-        //if (count == 0) {
-        //    loadData();
-        //}
+        int count = orderService.findAllOrders().size();
+//        if (count == 0) {
+//            loadData();
+//        }
         //testUpdateOrder();
     }
 
@@ -59,7 +60,7 @@ public class DataLoader implements CommandLineRunner {
     private void loadData() {
         log.info("Loading data ...........");
 
-       /* Order myOrder = new Order();
+       Order myOrder = new Order();
         myOrder.setOrderStatus(StatusEnum.ORDER_CREATED.getStatus());
         myOrder.setOrderDate(new Date());
 
@@ -77,6 +78,6 @@ public class DataLoader implements CommandLineRunner {
         myItem2.setOrder(myOrder);
         myOrder.getItems().add(myItem2);
 
-        orderService.createNewOrder(myOrder);*/
+        //orderService.createNewOrder(myOrder);
     }
 }
