@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.rks.paymentservice.service.IPaymentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +13,14 @@ import org.springframework.stereotype.Component;
 public class OrderCreatedListener {
 
     private static final Logger log = LoggerFactory.getLogger(OrderCreatedListener.class);
-
-    @Autowired
     private IPaymentService paymentService;
 
-    //@RabbitListener(queues="${rabbitmq.queueName}")
+    @Autowired
+    public OrderCreatedListener(IPaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
+    @RabbitListener(queues="${rabbitmq.queueName}")
     public void listenToOrderCreated(byte[] message) {
 
         String msg = new String(message);

@@ -2,6 +2,7 @@ package com.rks.orderservice.controller;
 
 import com.rks.orderservice.domain.Order;
 import com.rks.orderservice.dto.request.OrderRequest;
+import com.rks.orderservice.dto.request.UpdateOrderRequest;
 import com.rks.orderservice.dto.response.ErrorResponse;
 import com.rks.orderservice.dto.response.OrderResponse;
 import com.rks.orderservice.service.OrderService;
@@ -99,6 +100,11 @@ public class OrderControllerInternal {
     })
     public OrderResponse createOrder(@RequestBody OrderRequest orderRequest) {
         return orderService.createNewOrder(orderRequest);
+    }
+
+    @PutMapping("/v1/orders/{orderId}")
+    public OrderResponse updateOrder(@PathVariable Long orderId, @RequestBody UpdateOrderRequest request) {
+        return orderService.updateOrder(orderId, request);
     }
 
     @ApiOperation(

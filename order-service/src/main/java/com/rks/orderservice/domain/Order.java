@@ -1,14 +1,15 @@
 package com.rks.orderservice.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import org.omg.CORBA.PRIVATE_MEMBER;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -31,6 +32,9 @@ public class Order extends BaseEntity {
 
     @Column(name = "order_status")
     private String orderStatus;
+
+    @Column(name = "payment_status")
+    private String paymentStatus;
 
     @Column(name = "created_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",insertable= false, updatable = false)
     private Date createdDate;

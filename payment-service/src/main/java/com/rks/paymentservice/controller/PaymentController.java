@@ -1,7 +1,9 @@
 package com.rks.paymentservice.controller;
 
+import com.rks.paymentservice.clients.orderservice.OrderServiceClientFeign;
 import com.rks.paymentservice.domain.PaymentMaster;
 import com.rks.paymentservice.dto.order.OrderResponse;
+import com.rks.paymentservice.dto.request.PaymentRequest;
 import com.rks.paymentservice.dto.response.PaymentMasterResponse;
 import com.rks.paymentservice.repository.PaymentMasterRepository;
 import com.rks.paymentservice.service.IPaymentService;
@@ -44,7 +46,7 @@ public class PaymentController {
 
     @PostMapping(path = "/payments")
     @ResponseStatus(HttpStatus.CREATED)
-    public PaymentMasterResponse createPayment(@RequestBody PaymentMaster request) {
+    public PaymentMasterResponse createPayment(@RequestBody PaymentRequest request) {
         return paymentService.createPayment(request);
     }
 

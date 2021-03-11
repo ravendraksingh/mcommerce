@@ -1,13 +1,12 @@
-package com.rks.paymentservice.client.order.impl;
+package com.rks.paymentservice.clients.orderservice.impl;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.rks.paymentservice.client.order.OrderClient;
+import com.rks.paymentservice.clients.orderservice.OrderServiceClient;
 import com.rks.paymentservice.constants.Constant;
 import com.rks.paymentservice.dto.order.OrderResponse;
 import com.rks.paymentservice.exceptions.BaseException;
 import com.rks.paymentservice.exceptions.MicroServiceUnavailableException;
-import com.rks.paymentservice.util.StatusEnum;
 import com.rks.paymentservice.utility.CommonUtils;
 import com.rks.paymentservice.utility.RestMethod;
 import org.apache.logging.log4j.LogManager;
@@ -24,9 +23,9 @@ import static com.rks.paymentservice.constants.Constant.*;
 import static com.rks.paymentservice.constants.ErrorCodeConstants.*;
 
 @Component
-public class OrderClientImpl implements OrderClient {
+public class OrderServiceClientImpl implements OrderServiceClient {
 
-    private static final Logger logger = LogManager.getLogger(OrderClientImpl.class);
+    private static final Logger logger = LogManager.getLogger(OrderServiceClientImpl.class);
 
     @Value("${order-service-http-url}")
     private String orderServiceIp;
