@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.rks.mcommon.constants.CommonConstants.FAILED;
-import static com.rks.mcommon.constants.CommonConstants.INTERNAL_SERVER_ERROR;
+import static com.rks.mcommon.constants.CommonConstants.*;
+import static com.rks.mcommon.constants.CommonErrorCodeConstants.DB_NOT_AVAILABLE_ERROR_CODE;
 import static com.rks.mcommon.constants.CommonErrorCodeConstants.INTERNAL_SERVER_ERROR_CODE;
 import static com.rks.orderservice.constants.Constant.INTERNAL_SERVER_ERROR_MSG;
 import static com.rks.orderservice.constants.Constant.INVALID_ORDER_ID_MSG;
@@ -53,22 +53,15 @@ public class OrderServiceImpl implements OrderService {
 
             Order savedOrder = orderRepository.save(request);
             log.debug("Order created successfully. OrderId: "+savedOrder.getId());
-
             //Sending data to RabbitMQ
-            log.debug("Sending new order created message to RabbitMQ. OrderId: "+savedOrder.getId());
-
+            log.debug("Sending new order created message to queue. OrderId: " + savedOrder.getId());
             OrderMessage message = new OrderMessage(savedOrder.getId(), savedOrder.getOrderStatus());
-            //producer.sendMessage(message);
-            log.debug("Inside OrderServiceImpl. OrderMessage is {}", message);
             orderCreatedMessageProducer.sendMessage(message);
-            //sendMessageToOrderQueue(savedOrder);
             return createOrderResponseForOrder(savedOrder);
         } catch (Exception e) {
-            e.printStackTrace();
-            //BaseException ex = new BaseException(FAILED, DB_NOT_AVAILABLE_ERROR_CODE, DB_NOT_AVAILABLE_ERROR_MSG);
-            //log.error("Exception occurred. Message {}. ResponseCode: {}. Message: {}", ex.getCode(), ex.getMessage());
-            //throw ex;
-            throw e;
+            BaseException ex = new BaseException(FAILED, DB_NOT_AVAILABLE_ERROR_CODE, DB_NOT_AVAILABLE_ERROR_MSG);
+            log.error("Exception occurred. Message {}. ResponseCode: {}. Message: {}", ex.getCode(), ex.getMessage());
+            throw ex;
         }
     }
 
