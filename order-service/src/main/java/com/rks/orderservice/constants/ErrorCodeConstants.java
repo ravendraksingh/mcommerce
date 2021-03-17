@@ -11,4 +11,6 @@ public class ErrorCodeConstants {
     public static final int INVALID_ORDER_ID_CODE                               = 1110;
     public static final int UPDATE_ORDER_FAILED_ERROR_CODE                      = 1111;
     public static final int DB_NOT_AVAILABLE_ERROR_CODE                         = 1112;
+
+    public static final int JWT_TOKEN_GENERATION_ERROR_CODE                          = 9008;
 }

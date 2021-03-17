@@ -26,7 +26,7 @@ public class Constant {
 
     public static final String ORDER_SERVICE            = "order-service";
     public static final String PAYMENT_SERVICE          = "payment-service";
-    public static final String JWT_ORDER_ID          = "orderId";
+    public static final String JWT_ORDER_ID             = "orderId";
 
     public static final String ORDER_GET                = "order.get";
 

@@ -4,6 +4,8 @@ import com.rks.userservice.dto.ApiResponse;
 import com.rks.userservice.entities.Role;
 import com.rks.userservice.entities.RoleName;
 import com.rks.userservice.entities.User;
+import com.rks.userservice.errors.ErrorObject;
+import com.rks.userservice.errors.ErrorResponse;
 import com.rks.userservice.exception.AppException;
 import com.rks.userservice.model.JwtAuthenticationResponse;
 import com.rks.userservice.model.LoginRequest;
@@ -12,6 +14,8 @@ import com.rks.userservice.repository.RoleRepository;
 import com.rks.userservice.repository.UserRepository;
 import com.rks.userservice.security.JwtTokenProvider;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
@@ -21,6 +25,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +34,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Arrays;
 import java.util.Collections;
 
 @ConditionalOnProperty(value = "app.security.enabled",
@@ -37,6 +43,8 @@ import java.util.Collections;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+    private static final Logger log = LogManager.getLogger(AuthController.class);
+
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
@@ -63,6 +71,12 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+//        if (errors.hasErrors()) {
+//            log.debug("Error occurred in registering user. Errors: {}", errors);
+//            return new ResponseEntity<ErrorResponse>(
+//                    new ErrorResponse(Arrays.asList(new ErrorObject(45, "new error message"))),
+//                    HttpStatus.BAD_REQUEST);
+//        }
         if(userRepository.existsByUsername(signUpRequest.getUsername())) {
             return new ResponseEntity(new ApiResponse(false, "Username is already taken!"),
                     HttpStatus.BAD_REQUEST);

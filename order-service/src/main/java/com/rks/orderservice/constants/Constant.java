@@ -23,10 +23,10 @@ public class Constant {
 
     public static final String ORDER_SERVICE            = "order-service";
     public static final String PAYMENT_SERVICE          = "payment-service";
-
+    public static final String JWT_ORDER_ID             = "orderId";
+    public static final String JWT_CLIENT_ID            = "Client-id";
     // Exception Message
     public static final String IS_OLD_API               = "isOldApi";
-
     public static final String INVALID_ORDER_ID_MSG     = "Invalid Order Id";
     public static final String UPDATE_ORDER_FAILED_ERROR_MSG = "Order update operation failed";
     public static final String UPDATE_ORDER_SUCCESS_MSG = "Order updated successfully";
@@ -36,4 +36,8 @@ public class Constant {
 
     public static final String JWT_SECRET_KEY_ORDER_SERVICE = "Ak37osje2360KHy#0ncWR0J$xw29";
     public static final String JWT_SECRET_KEY_PAYMENT_SERVICE = "s7kys&923onwg81AE9$$qdvs45";
+
+    public static final int JWT_EXPIRATION_TIME         = 3600000;
+
+    public static final String JWT_TOKEN_GENERATION_ERROR_MSG = "Error in jwt token generation";
 }
