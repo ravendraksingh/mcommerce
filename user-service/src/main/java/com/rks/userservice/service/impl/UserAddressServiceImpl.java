@@ -15,7 +15,7 @@ import java.util.Optional;
 
 import static com.rks.mcommon.constants.CommonConstants.FAILED;
 import static com.rks.mcommon.constants.CommonErrorCodeConstants.NOT_FOUND_ERROR_CODE;
-import static com.rks.userservice.constants.Constants.USER_NOT_FOUND_ERROR_MSG;
+import static com.rks.userservice.constants.UserServiceConstants.USER_NOT_FOUND_ERROR_MSG;
 
 @Service
 public class UserAddressServiceImpl implements UserAddressService {
