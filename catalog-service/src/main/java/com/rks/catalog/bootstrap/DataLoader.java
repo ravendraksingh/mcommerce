@@ -30,7 +30,7 @@ public class DataLoader implements CommandLineRunner {
         deleteAllProducts();
         createFewProducts();
         listAllProducts();
-        createFewCategories();
+        //createFewCategories();
         //clearAllCache();
     }
 
@@ -87,7 +87,7 @@ public class DataLoader implements CommandLineRunner {
         Product p1 = Product.builder().sku("aa-kk-vol-1").type("Audio Album").name("Kishore Kumar Vol-1")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
-                .pricing(PriceInfo.builder().retail(500d).retail(480d).savings(20d).build())
+                .pricing(PriceInfo.builder().list(500d).retail(480d).savings(20d).build())
                 //.details(detailInfo)
                 .build();
         productRepository.save(p1);
@@ -95,7 +95,7 @@ public class DataLoader implements CommandLineRunner {
         Product p2 = Product.builder().sku("aa-kk-vol-2").type("Audio Album").name("Kishore Kumar Vol-2")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
-                .pricing(PriceInfo.builder().retail(500d).retail(450d).savings(50d).build())
+                .pricing(PriceInfo.builder().list(500d).retail(450d).savings(50d).build())
                 //.details(detailInfo)
                 .build();
         productRepository.save(p2);
@@ -103,7 +103,7 @@ public class DataLoader implements CommandLineRunner {
         Product p3 = Product.builder().sku("aa-kk-vol-3").type("Audio Album").name("Kishore Kumar Vol-3")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
-                .pricing(PriceInfo.builder().retail(500d).retail(400d).savings(100d).build())
+                .pricing(PriceInfo.builder().list(500d).retail(400d).savings(100d).build())
                 //.details(detailInfo)
                 .build();
         productRepository.save(p3);
@@ -111,7 +111,7 @@ public class DataLoader implements CommandLineRunner {
         Product p4 = Product.builder().sku("aa-kk-vol-4").type("Audio Album").name("Kishore Kumar Vol-4")
                 .description("By kishore kumar")
                 .shipping(shippingDetails)
-                .pricing(PriceInfo.builder().retail(800d).retail(800d).savings(0d).build())
+                .pricing(PriceInfo.builder().list(800d).retail(800d).savings(0d).build())
                 //.details(detailInfo)
                 .build();
         productRepository.save(p4);
