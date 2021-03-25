@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping("/catalog/ext")
+@RequestMapping("/catalog-service/")
 public class ProductController {
 
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
