@@ -8,14 +8,19 @@
       <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/out/production/.mvn/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceJWT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/exception/BaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/config/CaffeineCacheConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/service/DefaultCustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/config/StateMachineConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/domain/Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/domain/PaymentEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/domain/PaymentState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/repository/PaymentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/services/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/services/PaymentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/main/java/com/rks/orderssm/services/PaymentStateChangeInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/test/java/com/rks/config/StateMachineConfigTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-ssm/src/test/java/com/rks/orderssm/services/PaymentServiceImplTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../test/test.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../user-service/.idea/$CACHE_FILE$" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../user-service/.idea/compiler.xml" afterDir="false" />
@@ -116,15 +121,12 @@
       <change afterPath="$PROJECT_DIR$/../user-service/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../user-service/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../user-service/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/bootstrap/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/bootstrap/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../catalog-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/CatalogServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/CatalogServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-service/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/ErrorCodeConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/constants/ErrorCodeConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/controller/OrderControllerExternal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +153,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="master" />
+        <entry key="$PROJECT_DIR$/.." value="add-payment-details-to-order" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -230,13 +232,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -314,7 +318,8 @@
       <workItem from="1615446230639" duration="18047000" />
       <workItem from="1615891876628" duration="2503000" />
       <workItem from="1615905354169" duration="617000" />
-      <workItem from="1615979792053" duration="140000" />
+      <workItem from="1615979792053" duration="193000" />
+      <workItem from="1616696859973" duration="350000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic Order service. It generates a new order and items of this order.">
       <created>1573534637134</created>
@@ -393,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615481014450</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Local JWT based order service added">
+      <created>1615979977123</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1615979977123</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +425,8 @@
     <MESSAGE value="Updated logging." />
     <MESSAGE value="Field payment_status added to Order entity." />
     <MESSAGE value="Feign added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feign added" />
+    <MESSAGE value="Local JWT based order service added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Local JWT based order service added" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
