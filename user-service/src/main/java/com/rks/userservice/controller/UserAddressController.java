@@ -1,6 +1,6 @@
 package com.rks.userservice.controller;
 
-import com.rks.userservice.entities.UserAddress;
+import com.rks.userservice.domain.UserAddress;
 import com.rks.userservice.service.UserAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.rks.userservice.security;
 
-import com.rks.userservice.entities.UserPrincipal;
+import com.rks.userservice.domain.UserPrincipal;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

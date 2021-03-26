@@ -1,4 +1,4 @@
-package com.rks.userservice.entities;
+package com.rks.userservice.domain;
 
 import lombok.Data;
 import org.hibernate.annotations.NaturalId;

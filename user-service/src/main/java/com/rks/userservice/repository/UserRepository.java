@@ -1,6 +1,6 @@
 package com.rks.userservice.repository;
 
-import com.rks.userservice.entities.User;
+import com.rks.userservice.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

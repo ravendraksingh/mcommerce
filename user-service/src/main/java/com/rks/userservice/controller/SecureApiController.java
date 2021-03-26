@@ -1,6 +1,6 @@
 package com.rks.userservice.controller;
 
-import com.rks.userservice.dto.ApiResponse;
+import com.rks.userservice.dto.ApiSuccessResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ public class SecureApiController {
     //@PreAuthorize("hasRole('USER')")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/hello")
-    public ApiResponse justSayHello() {
-        return new ApiResponse(true, "Hello World!");
+    public ApiSuccessResponse justSayHello() {
+        return new ApiSuccessResponse("success", "Hello World!");
     }
 }
