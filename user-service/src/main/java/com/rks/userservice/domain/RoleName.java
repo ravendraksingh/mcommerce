@@ -1,4 +1,4 @@
-package com.rks.userservice.entities;
+package com.rks.userservice.domain;
 
 public enum RoleName {
     ROLE_USER,

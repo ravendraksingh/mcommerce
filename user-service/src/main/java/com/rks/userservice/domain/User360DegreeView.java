@@ -1,7 +1,7 @@
-package com.rks.userservice.model;
+package com.rks.userservice.domain;
 
-import com.rks.userservice.entities.User;
-import com.rks.userservice.entities.UserAddress;
+import com.rks.userservice.domain.User;
+import com.rks.userservice.domain.UserAddress;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

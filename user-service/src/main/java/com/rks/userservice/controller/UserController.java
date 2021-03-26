@@ -1,25 +1,25 @@
 package com.rks.userservice.controller;
 
-import com.rks.userservice.entities.User;
-import com.rks.userservice.model.User360DegreeView;
-import com.rks.userservice.repository.UserRepository;
-import com.rks.userservice.service.UserAddressService;
 import com.rks.userservice.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
-@RestController("/user-service/ext")
+@RestController
+@RequestMapping("/api/users")
 public class UserController {
+    private final UserService userService;
 
-    @Autowired
-    UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-    @GetMapping("/v1/users/{userName}/360degreeview")
-    public User360DegreeView getUser360DegreeView(@Valid @PathVariable final String userName) {
-        return userService.get360DegreeView(userName);
+    @DeleteMapping("/{userId}")
+    public ResponseEntity delete(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+        return new ResponseEntity(null, HttpStatus.NO_CONTENT);
     }
 }

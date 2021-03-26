@@ -1,4 +1,4 @@
-package com.rks.userservice.entities;
+package com.rks.userservice.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,8 +12,9 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name = "users")
 @Entity

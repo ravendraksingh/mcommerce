@@ -1,7 +1,7 @@
 package com.rks.userservice.repository;
 
-import com.rks.userservice.entities.Role;
-import com.rks.userservice.entities.RoleName;
+import com.rks.userservice.domain.Role;
+import com.rks.userservice.domain.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

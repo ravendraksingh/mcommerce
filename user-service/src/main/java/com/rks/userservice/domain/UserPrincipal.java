@@ -1,4 +1,4 @@
-package com.rks.userservice.entities;
+package com.rks.userservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

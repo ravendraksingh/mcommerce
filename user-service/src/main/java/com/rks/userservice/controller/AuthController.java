@@ -1,23 +1,15 @@
 package com.rks.userservice.controller;
 
-import com.rks.userservice.dto.ApiResponse;
-import com.rks.userservice.entities.Role;
-import com.rks.userservice.entities.RoleName;
-import com.rks.userservice.entities.User;
-import com.rks.userservice.errors.ErrorObject;
-import com.rks.userservice.errors.ErrorResponse;
+import com.rks.mcommon.api.response.ApiError;
+import com.rks.mcommon.api.response.ApiSuccess;
+import com.rks.userservice.domain.*;
+import com.rks.userservice.dto.ApiSuccessResponse;
 import com.rks.userservice.exception.AppException;
-import com.rks.userservice.model.JwtAuthenticationResponse;
-import com.rks.userservice.model.LoginRequest;
-import com.rks.userservice.model.SignUpRequest;
 import com.rks.userservice.repository.RoleRepository;
 import com.rks.userservice.repository.UserRepository;
 import com.rks.userservice.security.JwtTokenProvider;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,7 +17,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,27 +25,40 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-@ConditionalOnProperty(value = "app.security.enabled",
-        havingValue = "true",
-        matchIfMissing = false)
+import static com.rks.userservice.constants.ErrorCodeConstants.EMAIL_ALREADY_IN_USE_ERR_CODE;
+import static com.rks.userservice.constants.ErrorCodeConstants.USERNAME_ALREADY_IN_USE_ERR_CODE;
+import static com.rks.userservice.constants.ErrorMessageConstants.EMAIL_ALREADY_IN_USE_ERR_MSG;
+import static com.rks.userservice.constants.ErrorMessageConstants.USERNAME_ALREADY_IN_USE_ERR_MSG;
+
+//@ConditionalOnProperty(value = "app.security.enabled",
+//        havingValue = "true",
+//        matchIfMissing = false)
+@Slf4j
+@Profile("local-security")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    private static final Logger log = LogManager.getLogger(AuthController.class);
+    private final AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider tokenProvider;
 
-    @Autowired
-    AuthenticationManager authenticationManager;
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    RoleRepository roleRepository;
-    @Autowired
-    PasswordEncoder passwordEncoder;
-    @Autowired
-    JwtTokenProvider tokenProvider;
+    public AuthController(AuthenticationManager authenticationManager,
+                          UserRepository userRepository,
+                          RoleRepository roleRepository,
+                          PasswordEncoder passwordEncoder,
+                          JwtTokenProvider tokenProvider) {
+        this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenProvider = tokenProvider;
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -66,7 +70,11 @@ public class AuthController {
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken(authentication);
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+        Map<String, Object> data = new HashMap<>();
+        data.put("tokenType", "Bearer");
+        data.put("accessToken", jwt);
+        ApiSuccessResponse apiSuccessResponse = new ApiSuccessResponse("success", "Login Success", data);
+        return ResponseEntity.ok(apiSuccessResponse);
     }
 
     @PostMapping("/signup")
@@ -77,13 +85,16 @@ public class AuthController {
 //                    new ErrorResponse(Arrays.asList(new ErrorObject(45, "new error message"))),
 //                    HttpStatus.BAD_REQUEST);
 //        }
-        if(userRepository.existsByUsername(signUpRequest.getUsername())) {
-            return new ResponseEntity(new ApiResponse(false, "Username is already taken!"),
+        Boolean emailTaken = userRepository.existsByEmail(signUpRequest.getEmail());
+        Boolean userNameTaken = userRepository.existsByUsername(signUpRequest.getUsername());
+
+        if(emailTaken) {
+            return new ResponseEntity(new ApiError(EMAIL_ALREADY_IN_USE_ERR_CODE, EMAIL_ALREADY_IN_USE_ERR_MSG),
                     HttpStatus.BAD_REQUEST);
         }
 
-        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"),
+        if(userNameTaken) {
+            return new ResponseEntity(new ApiError(USERNAME_ALREADY_IN_USE_ERR_CODE, USERNAME_ALREADY_IN_USE_ERR_MSG),
                     HttpStatus.BAD_REQUEST);
         }
 
@@ -101,6 +112,6 @@ public class AuthController {
                 .fromCurrentContextPath().path("/users/{username}")
                 .buildAndExpand(result.getUsername()).toUri();
 
-        return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+        return ResponseEntity.created(location).body(new ApiSuccess("User registered successfully"));
     }
 }

@@ -1,4 +1,4 @@
-package com.rks.userservice.entities;
+package com.rks.userservice.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

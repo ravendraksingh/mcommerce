@@ -1,8 +1,8 @@
 package com.rks.userservice.service.impl;
 
 import com.rks.mcommon.exception.NotFoundException;
-import com.rks.userservice.entities.User;
-import com.rks.userservice.model.User360DegreeView;
+import com.rks.userservice.domain.User;
+import com.rks.userservice.domain.User360DegreeView;
 import com.rks.userservice.repository.UserAddressRepository;
 import com.rks.userservice.repository.UserRepository;
 import com.rks.userservice.service.UserService;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.rks.mcommon.constants.CommonConstants.FAILED;
-import static com.rks.mcommon.constants.CommonErrorCodeConstants.NOT_FOUND_ERROR_CODE;
-import static com.rks.userservice.constants.UserServiceConstants.USER_NOT_FOUND_ERROR_MSG;
+import static com.rks.mcommon.constants.CommonErrorMessageConstants.API_RESPONSE_STATUS_FAILURE;
+import static com.rks.userservice.constants.ErrorCodeConstants.USER_NOT_FOUND_ERR_CODE;
+import static com.rks.userservice.constants.ErrorMessageConstants.USER_NOT_FOUND_ERR_MSG;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,10 +27,19 @@ public class UserServiceImpl implements UserService {
     UserAddressRepository userAddressRepository;
 
     @Override
+    public void deleteUser(Long userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if(!optionalUser.isPresent()) {
+            throw new NotFoundException(API_RESPONSE_STATUS_FAILURE, USER_NOT_FOUND_ERR_CODE, USER_NOT_FOUND_ERR_MSG);
+        }
+        userRepository.deleteById(userId);
+    }
+
+    @Override
     public User360DegreeView get360DegreeView(String userName) {
         Optional<User> optionalUser = userRepository.findByUsername(userName);
         if(!optionalUser.isPresent()) {
-            throw new NotFoundException(FAILED, NOT_FOUND_ERROR_CODE, USER_NOT_FOUND_ERROR_MSG);
+            throw new NotFoundException(API_RESPONSE_STATUS_FAILURE, USER_NOT_FOUND_ERR_CODE, USER_NOT_FOUND_ERR_MSG);
         }
         User fetchedUser = optionalUser.get();
         User360DegreeView view = new User360DegreeView();
