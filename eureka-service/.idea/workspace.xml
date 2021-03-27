@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1181aee0-c33b-4845-92cc-aa14afeed03d" name="Default Changelist" comment="" />
+    <list default="true" id="1181aee0-c33b-4845-92cc-aa14afeed03d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,8 +140,16 @@
       <option name="presentableId" value="Default" />
       <updated>1573464742156</updated>
       <workItem from="1573464743953" duration="1772000" />
-      <workItem from="1616834617257" duration="2630000" />
+      <workItem from="1616834617257" duration="3312000" />
     </task>
+    <task id="LOCAL-00001" summary="Eureka service changes">
+      <created>1616838462935</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616838462935</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -186,6 +197,12 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Eureka service changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Eureka service changes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/eureka/EurekaServiceApplication.java">

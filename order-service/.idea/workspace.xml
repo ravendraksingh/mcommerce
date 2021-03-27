@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbe691d4-df50-464e-80d0-665a04116471" name="Default Changelist" comment="Added basic Order service. It generates a new order and items of this order.">
-      <change afterPath="$PROJECT_DIR$/../gateway/src/main/java/com/rks/gateway/config/LoadBalancedRoutesConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gateway/src/main/resources/application-local-discovery.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/config/EurekaClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka-service/eureka-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/eureka-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../eureka-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../eureka-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/main/java/com/rks/gateway/McommerceGatewayApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/test/java/com/rks/gateway/McommerceGatewayApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rks/orderservice/OrderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/controller/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/controller/ApiExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/user-service.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
