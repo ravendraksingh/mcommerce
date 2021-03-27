@@ -157,6 +157,14 @@
     <orderEntry type="library" name="Maven: org.jvnet.staxex:stax-ex:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j:1.0.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-circuitbreaker-resilience4j:1.0.0.RC1" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-circuitbreaker:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.vavr:vavr:0.10.0" level="project" />
+    <orderEntry type="library" name="Maven: io.vavr:vavr-match:0.10.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-core:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-timelimiter:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: io.github.resilience4j:resilience4j-reactor:1.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test-autoconfigure:2.2.1.RELEASE" level="project" />

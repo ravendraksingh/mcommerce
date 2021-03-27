@@ -1,6 +1,6 @@
 package com.rks.userservice.controller;
 
-import com.rks.mcommon.error.ApiError;
+import com.rks.mcommon.api.response.ApiError;
 import com.rks.mcommon.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1181aee0-c33b-4845-92cc-aa14afeed03d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/config/CatalogExecutorConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/UtilityController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/dto/response/BaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/dto/response/HealthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eureka-service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../order-service/order-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/CatalogServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/CatalogServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/java/com/rks/catalog/controllers/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../catalog-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../catalog-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gateway/src/main/java/com/rks/gateway/config/LoadBalancedRoutesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gateway/src/main/resources/application-local-discovery.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/config/EurekaClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/main/java/com/rks/gateway/McommerceGatewayApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/test/java/com/rks/gateway/McommerceGatewayApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/order-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/order-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/rks/orderservice/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/rks/orderservice/OrderServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/controller/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/controller/ApiExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user-service/user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/user-service.iml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,28 +30,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/eureka/EurekaServiceApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -64,18 +42,12 @@
       </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="811" />
   </component>
+  <component name="ProjectId" id="1qKiJnP2dsd68h0GdoSwPmMHiYt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -130,6 +102,9 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -138,26 +113,27 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.excludes" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EurekaServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.rks.eureka.EurekaServiceApplication" />
@@ -166,6 +142,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -177,6 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573464742156</updated>
       <workItem from="1573464743953" duration="1772000" />
+      <workItem from="1616834617257" duration="2216000" />
     </task>
     <servers />
   </component>
@@ -224,7 +202,7 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rks/eureka/EurekaServiceApplication.java">
