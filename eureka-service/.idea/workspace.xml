@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1181aee0-c33b-4845-92cc-aa14afeed03d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../gateway/src/main/java/com/rks/gateway/config/LoadBalancedRoutesConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gateway/src/main/resources/application-local-discovery.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/config/EurekaClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eureka-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/main/java/com/rks/gateway/McommerceGatewayApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mcommerce-gateway/src/test/java/com/rks/gateway/McommerceGatewayApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/order-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/order-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/rks/orderservice/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/rks/orderservice/OrderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/controller/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/src/main/java/com/rks/userservice/controller/ApiExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-service/user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-service/user-service.iml" afterDir="false" />
-    </list>
+    <list default="true" id="1181aee0-c33b-4845-92cc-aa14afeed03d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573464742156</updated>
       <workItem from="1573464743953" duration="1772000" />
-      <workItem from="1616834617257" duration="2216000" />
+      <workItem from="1616834617257" duration="2630000" />
     </task>
     <servers />
   </component>
