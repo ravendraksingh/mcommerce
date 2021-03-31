@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.rks.orderservice.constants.Constant.ITEMS_IN_ORDER;
-import static com.rks.orderservice.constants.Constant.ORDER_DATE;
+import static com.rks.orderservice.constants.OrderServiceConstants.ITEMS_IN_ORDER;
+import static com.rks.orderservice.constants.OrderServiceConstants.ORDER_DATE;
 
 @Data
 @NoArgsConstructor

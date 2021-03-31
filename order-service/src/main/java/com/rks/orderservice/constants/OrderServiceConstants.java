@@ -1,6 +1,6 @@
 package com.rks.orderservice.constants;
 
-public class Constant {
+public class OrderServiceConstants {
 
     /**
      * Order related constants
@@ -27,7 +27,6 @@ public class Constant {
     public static final String JWT_CLIENT_ID            = "Client-id";
     // Exception Message
     public static final String IS_OLD_API               = "isOldApi";
-    public static final String INVALID_ORDER_ID_MSG     = "Invalid Order Id";
     public static final String UPDATE_ORDER_FAILED_ERROR_MSG = "Order update operation failed";
     public static final String UPDATE_ORDER_SUCCESS_MSG = "Order updated successfully";
 

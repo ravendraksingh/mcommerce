@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static com.rks.orderservice.constants.Constant.ORDER_STATUS;
-import static com.rks.orderservice.constants.Constant.PAYMENT_STATUS;
+import static com.rks.orderservice.constants.OrderServiceConstants.ORDER_STATUS;
+import static com.rks.orderservice.constants.OrderServiceConstants.PAYMENT_STATUS;
 
 @AllArgsConstructor
 @NoArgsConstructor

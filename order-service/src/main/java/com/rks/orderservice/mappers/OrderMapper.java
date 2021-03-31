@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderMapper extends ModelMapper {
-
     public OrderMapper() {
         OrderToOrderResponseConverter c1 = new OrderToOrderResponseConverter();
         OrderRequestToOrderConverter c2 = new OrderRequestToOrderConverter();

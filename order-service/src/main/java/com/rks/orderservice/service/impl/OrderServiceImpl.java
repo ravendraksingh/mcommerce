@@ -14,36 +14,35 @@ import com.rks.orderservice.service.OrderService;
 import com.rks.orderservice.util.StatusEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.rks.mcommon.constants.CommonConstants.*;
-import static com.rks.mcommon.constants.CommonErrorCodeConstants.DB_NOT_AVAILABLE_ERROR_CODE;
+import static com.rks.mcommon.constants.CommonConstants.INTERNAL_SERVER_ERROR;
 import static com.rks.mcommon.constants.CommonErrorCodeConstants.INTERNAL_SERVER_ERROR_CODE;
-import static com.rks.orderservice.constants.Constant.INTERNAL_SERVER_ERROR_MSG;
-import static com.rks.orderservice.constants.Constant.INVALID_ORDER_ID_MSG;
-import static com.rks.orderservice.constants.ErrorCodeConstants.INVALID_ORDER_ID_CODE;
+import static com.rks.orderservice.constants.OrderServiceConstants.INTERNAL_SERVER_ERROR_MSG;
+import static com.rks.orderservice.constants.OrderServiceErrorCodes.INVALID_ORDER_ID_ERR_CODE;
+import static com.rks.orderservice.constants.OrderServiceErrorCodes.ORDER_CREATION_FAILED_ERR_CODE;
+import static com.rks.orderservice.constants.OrderServiceErrorMessages.*;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-
     private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     private OrderRepository orderRepository;
     private OrderCreatedMessageProducer orderCreatedMessageProducer;
     private OrderMapper orderMapper;
 
-    @Autowired
     public OrderServiceImpl(OrderRepository orderRepository, OrderCreatedMessageProducer orderCreatedMessageProducer, OrderMapper orderMapper) {
         this.orderRepository = orderRepository;
         this.orderCreatedMessageProducer = orderCreatedMessageProducer;
         this.orderMapper = orderMapper;
     }
 
+    @Transactional
     @Override
     public OrderResponse createNewOrder(final OrderRequest orderRequest) {
         log.info("Going to create new order");
@@ -53,14 +52,14 @@ public class OrderServiceImpl implements OrderService {
             request.setOrderStatus(StatusEnum.ORDER_CREATED.getStatus());
 
             Order savedOrder = orderRepository.save(request);
-            log.debug("Order created successfully. OrderId: "+savedOrder.getId());
+            log.debug("Order created successfully. OrderId: {}", savedOrder.getId());
             //Sending data to RabbitMQ
             log.debug("Sending new order created message to queue. OrderId: " + savedOrder.getId());
             OrderMessage message = new OrderMessage(savedOrder.getId(), savedOrder.getOrderStatus());
             orderCreatedMessageProducer.sendMessage(message);
             return createOrderResponseForOrder(savedOrder);
         } catch (Exception e) {
-            BaseException ex = new BaseException(FAILED, DB_NOT_AVAILABLE_ERROR_CODE, DB_NOT_AVAILABLE_ERROR_MSG);
+            BaseException ex = new BaseException(FAILED, ORDER_CREATION_FAILED_ERR_CODE, ORDER_CREATION_FAILED_ERR_MSG);
             log.error("Exception occurred. Message {}. ResponseCode: {}. Message: {}", ex.getCode(), ex.getMessage());
             throw ex;
         }
@@ -87,13 +86,14 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Transactional
     @Override
     public OrderResponse findOrderById(Long orderId) {
         log.info("Fetching order details for order id {}.", orderId);
         try {
             Optional<Order> optionalOrder = orderRepository.findById(orderId);
             if (!optionalOrder.isPresent()) {
-                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID_CODE, INVALID_ORDER_ID_MSG);
+                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID_ERR_CODE, INVALID_ORDER_ID_ERR_MSG);
                 log.error("Exception occurred while fetching the order for orderId {}. ResponseCode: {}. Message: {}",
                         orderId, exception.getCode(), exception.getMessage());
                 throw exception;
@@ -110,13 +110,14 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Transactional
     @Override
     public void updateOrderStatus(Long orderId, String orderStatus) {
         log.info("Updating order status for orderId {}", orderId);
         try {
             Optional<Order> optionalOrder = orderRepository.findById(orderId);
             if (!optionalOrder.isPresent()) {
-                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID_CODE, INVALID_ORDER_ID_MSG);
+                BaseException exception = new NotFoundException(FAILED, INVALID_ORDER_ID_ERR_CODE, INVALID_ORDER_ID_ERR_MSG);
                 log.error("Exception occurred while fetching the order for orderId {}. ResponseCode: {}. Message: {}",
                         orderId, exception.getCode(), exception.getMessage());
                 throw exception;
@@ -133,11 +134,6 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    private OrderResponse createOrderResponseForOrder(Order request) {
-        OrderResponse response = new OrderResponse();
-        orderMapper.map(request, response);
-        return response;
-    }
 
     @Override
     public List<Order> findByOrderStatus(String status) {
@@ -162,11 +158,12 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Transactional
     public OrderResponse updateOrder(Long orderId, UpdateOrderRequest request) {
         log.debug("Updating order with orderId: {}" + orderId );
         Optional<Order> optionalOrder = orderRepository.findById(orderId);
         if (!optionalOrder.isPresent()) {
-            throw new NotFoundException(FAILED, INVALID_ORDER_ID_CODE, INVALID_ORDER_ID_MSG);
+            throw new NotFoundException(FAILED, INVALID_ORDER_ID_ERR_CODE, INVALID_ORDER_ID_ERR_MSG);
         }
         Order order = optionalOrder.get();
         if (request.getOrderStatus() != null) {
@@ -181,4 +178,9 @@ public class OrderServiceImpl implements OrderService {
         return response;
     }
 
+    private OrderResponse createOrderResponseForOrder(Order request) {
+        OrderResponse response = new OrderResponse();
+        orderMapper.map(request, response);
+        return response;
+    }
 }

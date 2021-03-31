@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.Date;
 
 import static com.rks.mcommon.constants.CommonConstants.FAILED;
-import static com.rks.orderservice.constants.Constant.*;
-import static com.rks.orderservice.constants.ErrorCodeConstants.JWT_TOKEN_GENERATION_ERROR_CODE;
+import static com.rks.orderservice.constants.OrderServiceConstants.*;
+import static com.rks.orderservice.constants.OrderServiceErrorCodes.JWT_TOKEN_GENERATION_ERROR_CODE;
 
 public class OrderServiceJWT {
 

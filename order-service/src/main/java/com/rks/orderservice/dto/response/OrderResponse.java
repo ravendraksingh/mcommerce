@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.rks.orderservice.constants.Constant.*;
+import static com.rks.orderservice.constants.OrderServiceConstants.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data

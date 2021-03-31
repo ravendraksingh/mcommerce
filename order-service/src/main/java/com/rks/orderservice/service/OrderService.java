@@ -8,7 +8,6 @@ import com.rks.orderservice.dto.response.OrderResponse;
 import java.util.List;
 
 public interface OrderService {
-
     List<Order> findAllOrders();
     List<Order> findByOrderStatus(String status);
     OrderResponse findOrderById(Long orderId);

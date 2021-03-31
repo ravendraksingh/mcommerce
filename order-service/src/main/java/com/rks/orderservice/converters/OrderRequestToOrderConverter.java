@@ -5,14 +5,10 @@ import com.rks.orderservice.domain.Order;
 import com.rks.orderservice.dto.request.OrderRequest;
 import org.modelmapper.Converter;
 import org.modelmapper.spi.MappingContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderRequestToOrderConverter implements Converter<OrderRequest, Order> {
-
-    public static final Logger log = LoggerFactory.getLogger(OrderRequestToOrderConverter.class);
 
     @Override
     public Order convert(MappingContext<OrderRequest, Order> context) {

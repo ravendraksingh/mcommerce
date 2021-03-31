@@ -10,6 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderMessage implements Serializable {
+    public static final long serialVersionUID = -7872297983617727925L;
     private Long orderId;
     //private Date orderDate;
     private String orderStatus;

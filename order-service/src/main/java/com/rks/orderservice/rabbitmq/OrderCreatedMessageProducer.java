@@ -1,15 +1,13 @@
 package com.rks.orderservice.rabbitmq;
 
 import com.rks.orderservice.configuration.OrderCreatedRabbitMQProperties;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class OrderCreatedMessageProducer {
-    private static final Logger log = LoggerFactory.getLogger(OrderCreatedMessageProducer.class);
-
     private RabbitTemplate template;
     private OrderCreatedRabbitMQProperties properties;
 

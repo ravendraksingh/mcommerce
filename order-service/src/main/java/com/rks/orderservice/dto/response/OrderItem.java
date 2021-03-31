@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
-import static com.rks.orderservice.constants.Constant.*;
+import static com.rks.orderservice.constants.OrderServiceConstants.*;
 
 @Data
 @NoArgsConstructor

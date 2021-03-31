@@ -23,7 +23,7 @@ import java.io.UnsupportedEncodingException;
 
 import static com.rks.mcommon.constants.CommonConstants.*;
 import static com.rks.mcommon.constants.CommonConstants.FAILED;
-import static com.rks.orderservice.constants.Constant.*;
+import static com.rks.orderservice.constants.OrderServiceConstants.*;
 
 @Api(value = "Order Service", description = "All APIs of order service")
 @RestController
