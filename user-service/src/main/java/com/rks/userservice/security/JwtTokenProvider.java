@@ -1,12 +1,17 @@
 package com.rks.userservice.security;
 
+import com.rks.userservice.domain.User;
 import com.rks.userservice.domain.UserPrincipal;
-import io.jsonwebtoken.*;
+import com.rks.userservice.exception.DefaultJwtException;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
@@ -20,40 +25,35 @@ public class JwtTokenProvider {
     @Value("${app.jwtExpirationInMs}")
     private int jwtExpirationInMs;
 
+    public JwtTokenProvider() {
+    }
+
     public String generateToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
-
+        logger.debug("User email is: {}", userPrincipal.getEmail());
+        jwtExpirationInMs = 10* 60 * 1000;
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
+
         return Jwts.builder()
-                .setSubject(Long.toString(userPrincipal.getId()))
+                .setId("authJWT")
+                .setSubject(userPrincipal.getEmail())
+                .claim("authorities", StringUtils.collectionToCommaDelimitedString(userPrincipal.getAuthorities()))
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }
 
-    public Long getUserIdFromJWT(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-        return Long.parseLong(claims.getSubject());
-    }
-
-    public boolean validateToken(String authToken) {
+    public User parseToken(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
-            return true;
-        } catch (MalformedJwtException ex) {
-            logger.error("Invalid JWT token");
-        } catch (ExpiredJwtException ex) {
-            logger.error("Expired JWT token");
-        } catch (UnsupportedJwtException ex) {
-            logger.error("Unsupported JWT token");
-        } catch (IllegalArgumentException ex) {
-            logger.error("JWT claims string is empty.");
+            Claims body = Jwts.parser().setSigningKey("JWTSuperSecretKey").parseClaimsJws(token).getBody();
+            User user = new User();
+            user.setUsername(body.getSubject());
+            return user;
+        } catch (DefaultJwtException e) {
+            logger.debug("Exception occurred. Message is: {}", e.getMessage());
+            return null;
         }
-        return false;
     }
 }

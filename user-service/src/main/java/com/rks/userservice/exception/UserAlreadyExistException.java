@@ -1,7 +1,5 @@
 package com.rks.userservice.exception;
 
-import com.rks.mcommon.exception.BaseException;
-
 public class UserAlreadyExistException extends BaseException {
 
     private static final long serialVersionUID = 7407976242747911392L;
@@ -15,7 +13,7 @@ public class UserAlreadyExistException extends BaseException {
     }
 
     public UserAlreadyExistException(String message, Throwable cause, String status, int code,
-                             String message1) {
+                                     String message1) {
         super(message, cause, status, code, message1);
     }
 }

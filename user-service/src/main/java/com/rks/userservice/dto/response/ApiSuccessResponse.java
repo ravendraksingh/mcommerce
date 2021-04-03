@@ -1,15 +1,18 @@
-package com.rks.userservice.dto;
+package com.rks.userservice.dto.response;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import springfox.documentation.spring.web.json.Json;
 
-import java.util.List;
 import java.util.Map;
 
 @Data
 public class ApiSuccessResponse {
     private String status;
     private String message;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Map<String, Object> data;
 
     public ApiSuccessResponse(String status, String message) {

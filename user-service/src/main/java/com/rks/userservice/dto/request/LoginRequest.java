@@ -1,4 +1,4 @@
-package com.rks.userservice.domain;
+package com.rks.userservice.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
